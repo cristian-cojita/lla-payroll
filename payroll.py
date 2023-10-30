@@ -9,7 +9,7 @@ from gspread_formatting import get_effective_format
 from pathlib import Path
 
 
-execute_on_date = "2023-10-22"
+execute_on_date = "2023-10-29"
 
 # main
 # spreadsheet_id="1sNzFxpxb3XxLRP2xAENd1LC0k6V113ZUTNH-vs5OMpA"
@@ -187,6 +187,56 @@ def update_technicians_from_api(main_worksheet, payroll, metric):
     
     return "Technicians data updated successfully"
 
+
+def update_attendance_from_api(main_worksheet, payroll, metric):
+    cells_to_update = []
+    from_date, to_date, week_no, sheet_name = payroll
+    print(f"FromDate: {from_date}, ToDate: {to_date}, WeekNo: {week_no}, SheetName: {sheet_name}")
+    print("Call Attendance Api")
+    # Define API URL, headers, and request body
+    api_url = "https://api.jarvis-lla.com/api/v1.0/imports/payroll-attendance-summary"
+    headers = {
+        "X-API-Key": x_api_key,
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "fromDate": from_date,
+        "toDate": to_date
+    }
+    
+    # Make the API call
+    response = requests.post(api_url, headers=headers, json=payload)
+    response_data = response.json()
+    
+    # Get all employee IDs from the worksheet and store them in memory
+    employee_ids = main_worksheet.col_values(1)
+   
+    print("Fill attendance info")
+    if "employees" in response_data:
+        for employee in response_data["employees"]:
+            print(employee["employeeId"])
+            employee_id = employee["employeeId"]
+
+            # If employee_id is found in the in-memory list
+            if employee_id in employee_ids:
+                row = employee_ids.index(employee_id) + 1  # Adding 1 because list indices start from 0 while worksheet rows start from 1
+                
+                # Prepare the cells to update
+                hours =  employee['workedHours']
+                if (hours > 40):
+                    cells_to_update.append(gspread.Cell(row, metric["Hours"],40))
+                    cells_to_update.append(gspread.Cell(row, metric["Overtime"],hours-40))
+                else:
+                    cells_to_update.append(gspread.Cell(row, metric["Hours"],hours))
+                    cells_to_update.append(gspread.Cell(row, metric["Overtime"],''))
+                
+
+    if cells_to_update:
+        main_worksheet.update_cells(cells_to_update)       
+    
+    return "Attendance data updated successfully"
+
+
 def update_attendance_from_file(main_worksheet, payroll, metric):
     from_date, to_date, week_no, sheet_name = payroll
     cells_to_update = []
@@ -260,7 +310,7 @@ if payroll:
     result = update_technicians_from_api(main_worksheet, payroll, metric)
     print(result)
 
-    result = update_attendance_from_file(main_worksheet, payroll, metric)
+    result = update_attendance_from_api(main_worksheet, payroll, metric)
     print(result)
     
 else:
