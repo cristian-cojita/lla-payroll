@@ -9,7 +9,7 @@ from gspread_formatting import get_effective_format
 from pathlib import Path
 
 
-execute_on_date = "2023-10-29"
+execute_on_date = "2023-11-05"
 
 # main
 # spreadsheet_id="1sNzFxpxb3XxLRP2xAENd1LC0k6V113ZUTNH-vs5OMpA"
@@ -310,7 +310,8 @@ if payroll:
     result = update_technicians_from_api(main_worksheet, payroll, metric)
     print(result)
 
-    result = update_attendance_from_api(main_worksheet, payroll, metric)
+    # result = update_attendance_from_api(main_worksheet, payroll, metric)
+    result = update_attendance_from_file(main_worksheet, payroll, metric)
     print(result)
     
 else:

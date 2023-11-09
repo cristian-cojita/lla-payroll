@@ -1,3 +1,5 @@
 config/lla-payroll-c3b730c6f614.json
 attendance/*
 config.ini
+Sales01.xlsx
+.gitignore
