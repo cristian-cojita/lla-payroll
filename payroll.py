@@ -25,7 +25,8 @@ spreadsheet_id="1DTEvWiKttZY0G7jL1SJiNIP1SWkm3w73XhdmTw-ph6U"
 
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b730c6f614.json', scope)
+scopes_string = ' '.join(scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b730c6f614.json', scopes_string)
 client = gspread.authorize(creds)
 spreadsheet = client.open_by_key(spreadsheet_id)
 
@@ -224,7 +225,7 @@ def update_attendance_from_api(main_worksheet, payroll, metric):
                 # Prepare the cells to update
                 hours =  employee['workedHours']
                 if (hours > 40):
-                    cells_to_update.append(gspread.Cell(row, metric["Hours"],40))
+                    cells_to_update.append(gspread.Cell(row, metric["Hours"], "40"))
                     cells_to_update.append(gspread.Cell(row, metric["Overtime"],hours-40))
                 else:
                     cells_to_update.append(gspread.Cell(row, metric["Hours"],hours))
@@ -259,7 +260,7 @@ def update_attendance_from_file(main_worksheet, payroll, metric):
             # Prepare the cells to update
             hours =  employee['Total Hours Sum']
             if (hours > 40):
-                cells_to_update.append(gspread.Cell(row, metric["Hours"],40))
+                cells_to_update.append(gspread.Cell(row, metric["Hours"], "40"))
                 cells_to_update.append(gspread.Cell(row, metric["Overtime"],hours-40))
             else:
                 cells_to_update.append(gspread.Cell(row, metric["Hours"],hours))
@@ -296,14 +297,15 @@ def get_payroll_settings(spreadsheet, payroll):
 
 
 payroll = get_payroll_period(spreadsheet, execute_on_date)
-metric = get_payroll_settings(spreadsheet, payroll)
-
-from_date, to_date, week_no, sheet_name = payroll
-# Write the API data to the main worksheet
-print("Get ot create payroll sheet")
-main_worksheet = get_or_create_sheet(spreadsheet, sheet_name)
-
 if payroll:
+    metric = get_payroll_settings(spreadsheet, payroll)
+
+    from_date, to_date, week_no, sheet_name = payroll
+    # Write the API data to the main worksheet
+    print("Get ot create payroll sheet")
+    main_worksheet = get_or_create_sheet(spreadsheet, sheet_name)
+
+
     result = update_shop_data_from_api(main_worksheet, payroll, metric)
     print(result)
 
