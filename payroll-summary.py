@@ -14,13 +14,14 @@ summary_spreadsheet_id="14LNQnrTL6P5jBvnb7cvBVYEu3KNweIyYpAGUnreN0E4"
 # Set up gspread
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b730c6f614.json', scope)
+scopes_string = ' '.join(scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b730c6f614.json', scopes_string)
 client = gspread.authorize(creds)
 main_spreadsheet = client.open_by_key(main_spreadsheet_id)
 second_spreadsheet = client.open_by_key(second_spreadsheet_id)
 summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 
-execute_on_date = "2023-11-05"
+execute_on_date = "2023-11-19"
 
 # config = configparser.ConfigParser()
 # config.read('config/config.ini')

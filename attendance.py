@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from pathlib import Path
 
-folder_path = '2023-11-05'
+folder_path = '2023-11-19'
 base_dir = Path('attendance') / folder_path
 all_files = [f.name for f in base_dir.iterdir() if f.name.endswith('.xlsx') and f.name.startswith('Attendance')]
 

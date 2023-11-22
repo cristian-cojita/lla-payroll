@@ -9,7 +9,7 @@ from gspread_formatting import get_effective_format
 from pathlib import Path
 
 
-execute_on_date = "2023-11-05"
+execute_on_date = "2023-11-19"
 
 # main
 # spreadsheet_id="1sNzFxpxb3XxLRP2xAENd1LC0k6V113ZUTNH-vs5OMpA"
