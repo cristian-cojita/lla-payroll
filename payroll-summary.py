@@ -21,7 +21,7 @@ main_spreadsheet = client.open_by_key(main_spreadsheet_id)
 second_spreadsheet = client.open_by_key(second_spreadsheet_id)
 summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 
-execute_on_date = "2023-11-19"
+execute_on_date = "2023-12-10"
 
 # config = configparser.ConfigParser()
 # config.read('config/config.ini')
