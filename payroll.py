@@ -9,13 +9,13 @@ from gspread_formatting import get_effective_format
 from pathlib import Path
 
 
-execute_on_date = "2024-01-07"
+
 
 # main
 # spreadsheet_id="1sNzFxpxb3XxLRP2xAENd1LC0k6V113ZUTNH-vs5OMpA"
 
 # second
-spreadsheet_id = "1DTEvWiKttZY0G7jL1SJiNIP1SWkm3w73XhdmTw-ph6U"
+# spreadsheet_id = "1DTEvWiKttZY0G7jL1SJiNIP1SWkm3w73XhdmTw-ph6U"
 
 # test
 # spreadsheet_id="1Bq46L6Bj0xAeqJ_mQm8wQ6SINzgMItgxqhcvjrKmUwg"
@@ -38,7 +38,7 @@ config = configparser.ConfigParser()
 config.read("config/config.ini")
 x_api_key = config["API"]["X-API-Key"]
 
-
+execute_on_date = config["Settings"]["execute_on_date"]
 def get_payroll_period(spreadsheet, execute_on_date):
     # Access the "Payroll" sheet
     payroll_sheet = spreadsheet.worksheet("Payroll")

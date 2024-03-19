@@ -21,11 +21,11 @@ main_spreadsheet = client.open_by_key(main_spreadsheet_id)
 second_spreadsheet = client.open_by_key(second_spreadsheet_id)
 summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 
-execute_on_date = "2023-12-31"
 
-# config = configparser.ConfigParser()
-# config.read('config/config.ini')
+config = configparser.ConfigParser()
+config.read('config/config.ini')
 # x_api_key = config['API']['X-API-Key']
+execute_on_date = config["Settings"]["execute_on_date"]
 
 
 def get_payroll_period(spreadsheet, execute_on_date):

@@ -1,8 +1,14 @@
 import pandas as pd
 import os
 from pathlib import Path
+import configparser
 
-folder_path = '2023-12-31'
+
+config = configparser.ConfigParser()
+config.read('config/config.ini')
+# x_api_key = config['API']['X-API-Key']
+folder_path = config["Settings"]["execute_on_date"]
+
 base_dir = Path('attendance') / folder_path
 all_files = [f.name for f in base_dir.iterdir() if f.name.endswith('.xlsx') and f.name.startswith('Attendance')]
 
