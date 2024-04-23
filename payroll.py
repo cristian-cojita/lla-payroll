@@ -2,10 +2,11 @@ import gspread
 import requests
 import configparser
 import pandas as pd
+import datetime
 
 from oauth2client.service_account import ServiceAccountCredentials
 from gspread_formatting import get_effective_format
-
+from googleapiclient.discovery import build
 from pathlib import Path
 
 
@@ -32,6 +33,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name(
     "config/lla-payroll-c3b730c6f614.json", scopes_string
 )
 client = gspread.authorize(creds)
+drive_service = build('drive', 'v3', credentials=creds)
 spreadsheet = client.open_by_key(spreadsheet_id)
 
 config = configparser.ConfigParser()
@@ -39,6 +41,8 @@ config.read("config/config.ini")
 x_api_key = config["API"]["X-API-Key"]
 
 execute_on_date = config["Settings"]["execute_on_date"]
+
+
 def get_payroll_period(spreadsheet, execute_on_date):
     # Access the "Payroll" sheet
     payroll_sheet = spreadsheet.worksheet("Payroll")
@@ -322,6 +326,42 @@ def get_payroll_settings(spreadsheet, payroll):
     }
     return metric_to_column
 
+def create_backup(spreadsheet):
+    # Backup configuration
+    backup_folder_id = "1iSsFLYs7v3P3Q8BmJBMJcMBN05Mzx53h"  # ID of the "Backup" folder
+    today = datetime.date.today()
+    today_str = today.strftime('%Y-%m-%d')  # Format yyyy-mm-dd
+
+    # Check if a subfolder for today already exists
+    query = f"mimeType='application/vnd.google-apps.folder' and '{backup_folder_id}' in parents and name='{today_str}'"
+    response = drive_service.files().list(q=query, fields="files(id, name)").execute()
+    files = response.get('files', [])
+
+    if not files:
+        # Create a new folder
+        file_metadata = {
+            'name': today_str,
+            'mimeType': 'application/vnd.google-apps.folder',
+            'parents': [backup_folder_id]
+        }
+        folder = drive_service.files().create(body=file_metadata, fields='id').execute()
+        folder_id = folder.get('id')
+    else:
+        # Folder already exists
+        folder_id = files[0].get('id')
+
+    # Copy the spreadsheet to the new folder
+    copy_title = f"{spreadsheet.title} ({today_str})"
+    copy_metadata = {
+        'name': copy_title,
+        'parents': [folder_id]
+    }
+    drive_service.files().copy(fileId=spreadsheet_id, body=copy_metadata).execute()
+    print("Backup completed successfully.")
+
+
+# Create a backup file in the "Backup" folder
+create_backup(spreadsheet)
 
 payroll = get_payroll_period(spreadsheet, execute_on_date)
 if payroll:
