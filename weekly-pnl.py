@@ -94,7 +94,7 @@ for i in range(0, 4):
     try:
         payment_sheet = summary_sheets[i]
         pnl_sheet=pnl_sheets[i]
-        to_date = datetime.strptime(payment_sheet.title, "%Y-%m-%d")
+        to_date = datetime.strptime(payment_sheet.title, "%Y-%m-%d")- timedelta(days=1)
         from_date = to_date - timedelta(days=6)
         print(f"{from_date.strftime('%Y-%m-%d')} - {to_date.strftime('%Y-%m-%d')}")
 
