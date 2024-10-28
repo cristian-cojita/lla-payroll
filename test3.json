@@ -1,0 +1,1659 @@
+{
+    "fromDate":"2024-07-21",
+    "toDate":"2024-07-27"
+}
+
+{
+    "employees": [
+        {
+            "employeeId": "00426b6b-e3dd-4a8b-b849-f5a63b31f08c",
+            "laborHours": 29.700000000000003,
+            "technicianHours": 30.20,
+            "invoicedL": 3757.7500
+        },
+        {
+            "employeeId": "01487bec-97b3-4ac1-9b6b-473f4f310924",
+            "laborHours": 35.94,
+            "technicianHours": 36.14,
+            "invoicedL": 3557.6500
+        },
+        {
+            "employeeId": "026d7953-fc52-4b46-b8dc-0da7aeb2175f",
+            "laborHours": 12.750000000000007,
+            "technicianHours": 15.05,
+            "invoicedL": 822.2000
+        },
+        {
+            "employeeId": "03d91f0b-0395-4261-9a2d-c358cbf14c27",
+            "laborHours": 16.459999999999997,
+            "technicianHours": 16.45,
+            "invoicedL": 1495.1300
+        },
+        {
+            "employeeId": "04b43891-4e73-4e74-86ac-2d5a4065c11e",
+            "laborHours": 10.100000000000001,
+            "technicianHours": 10.10,
+            "invoicedL": 1389.5000
+        },
+        {
+            "employeeId": "04d5ff8d-40dc-4f83-9b2e-c4218662b55b",
+            "laborHours": 28.500000000000014,
+            "technicianHours": 32.50,
+            "invoicedL": 2571.3700
+        },
+        {
+            "employeeId": "07fe5f64-9767-4be3-b281-7cf36baf106c",
+            "laborHours": 41.95,
+            "technicianHours": 42.10,
+            "invoicedL": 5360.6700
+        },
+        {
+            "employeeId": "08054fb8-2c33-4eb4-bf7e-2367802adcad",
+            "laborHours": 45.4,
+            "technicianHours": 46.60,
+            "invoicedL": 5126.0700
+        },
+        {
+            "employeeId": "0837e768-ebf2-4f0a-8c3f-1487ecc812f0",
+            "laborHours": 25.01000000000002,
+            "technicianHours": 31.21,
+            "invoicedL": 1914.0300
+        },
+        {
+            "employeeId": "0894bb05-1b21-44cd-b17e-9b6fe9e61088",
+            "laborHours": 22.300000000000004,
+            "technicianHours": 22.90,
+            "invoicedL": 2184.2900
+        },
+        {
+            "employeeId": "08e90759-8407-4e40-bfdb-068b2b8ded11",
+            "laborHours": 2.9999999999999996,
+            "technicianHours": 3.00,
+            "invoicedL": 239.8900
+        },
+        {
+            "employeeId": "0980826b-10f0-4124-a72e-2a3d1e6adf6e",
+            "laborHours": 32.900000000000006,
+            "technicianHours": 32.40,
+            "invoicedL": 4365.4700
+        },
+        {
+            "employeeId": "0a9a7d50-3ae4-4949-b409-f7c7afc64252",
+            "laborHours": 75.94,
+            "technicianHours": 78.25,
+            "invoicedL": 10235.3000
+        },
+        {
+            "employeeId": "0b5bcf24-bfbb-4572-90d9-4c436cc7785e",
+            "laborHours": 13.600000000000001,
+            "technicianHours": 15.80,
+            "invoicedL": 1011.3900
+        },
+        {
+            "employeeId": "0c65e2be-ef7d-49ab-80f2-0b7062015788",
+            "laborHours": 22.850000000000012,
+            "technicianHours": 27.75,
+            "invoicedL": 772.1700
+        },
+        {
+            "employeeId": "0e3675c7-25c8-4eca-9d49-8c228611c344",
+            "laborHours": 11.070000000000002,
+            "technicianHours": 11.27,
+            "invoicedL": 823.2000
+        },
+        {
+            "employeeId": "0faee021-32b7-4226-8fb5-7fe46c2e59b7",
+            "laborHours": 25.870000000000005,
+            "technicianHours": 28.10,
+            "invoicedL": 3079.4100
+        },
+        {
+            "employeeId": "10e5091a-26bd-4419-ac21-f98348b5b512",
+            "laborHours": 21.26,
+            "technicianHours": 21.66,
+            "invoicedL": 2124.0100
+        },
+        {
+            "employeeId": "10f1ac7c-15c8-447a-8874-b6afb6997cd3",
+            "laborHours": 17.880000000000003,
+            "technicianHours": 18.18,
+            "invoicedL": 1486.9300
+        },
+        {
+            "employeeId": "11aca211-a88d-42b3-83d7-0a8efdd16b7e",
+            "laborHours": 9.44,
+            "technicianHours": 8.45,
+            "invoicedL": 962.4000
+        },
+        {
+            "employeeId": "11dc55aa-d1a7-4871-aec3-2f6793014a95",
+            "laborHours": 19.64,
+            "technicianHours": 80.90,
+            "invoicedL": 1061.0500
+        },
+        {
+            "employeeId": "1361c827-0aea-4ab6-ac55-cb6add0eb2d8",
+            "laborHours": 17.31000000000001,
+            "technicianHours": 19.91,
+            "invoicedL": 1513.5800
+        },
+        {
+            "employeeId": "140387ad-8719-4cc8-9dd5-8bdff1b6da8f",
+            "laborHours": 13.910000000000007,
+            "technicianHours": 17.31,
+            "invoicedL": 1039.2900
+        },
+        {
+            "employeeId": "1514fd7d-e0f6-4b1c-8307-edcb750e2827",
+            "laborHours": 0.0,
+            "technicianHours": 0.00,
+            "invoicedL": 105.0000
+        },
+        {
+            "employeeId": "1734a5ba-812c-4329-a946-edac207df091",
+            "laborHours": 46.79,
+            "technicianHours": 45.69,
+            "invoicedL": 6107.7500
+        },
+        {
+            "employeeId": "17d94652-be33-4477-bb63-70e325ce96d6",
+            "laborHours": 14.800000000000008,
+            "technicianHours": 14.30,
+            "invoicedL": 435.0000
+        },
+        {
+            "employeeId": "18f82d6b-82b0-4636-9744-39f3b53042cf",
+            "laborHours": 14.870000000000003,
+            "technicianHours": 14.45,
+            "invoicedL": 1165.7100
+        },
+        {
+            "employeeId": "19026164-726c-4e68-91c0-85787ec6fcd3",
+            "laborHours": 12.999999999999998,
+            "technicianHours": 14.40,
+            "invoicedL": 956.5000
+        },
+        {
+            "employeeId": "1b53bf34-2c54-4dd0-b96f-0198ad62f854",
+            "laborHours": 16.10000000000001,
+            "technicianHours": 17.10,
+            "invoicedL": 1223.1900
+        },
+        {
+            "employeeId": "1c939149-c9d9-4f2b-987d-1605c1dbdc50",
+            "laborHours": 5.25,
+            "technicianHours": 5.25,
+            "invoicedL": 150.0000
+        },
+        {
+            "employeeId": "1eaeb286-8ca1-4fe6-8382-64846c1e1af3",
+            "laborHours": 21.810000000000013,
+            "technicianHours": 26.60,
+            "invoicedL": 1365.0000
+        },
+        {
+            "employeeId": "1edada3a-3c72-4262-a4d2-797d74474e08",
+            "laborHours": 22.280000000000005,
+            "technicianHours": 24.75,
+            "invoicedL": 2031.0700
+        },
+        {
+            "employeeId": "1f63aa39-0e73-49fc-979f-a444fe18778f",
+            "laborHours": 4.199999999999999,
+            "technicianHours": 4.20,
+            "invoicedL": 240.0000
+        },
+        {
+            "employeeId": "1fd8ea25-60b5-4fb6-a3e9-a03d61b3c7f7",
+            "laborHours": 11.500000000000005,
+            "technicianHours": 17.20,
+            "invoicedL": 958.6300
+        },
+        {
+            "employeeId": "206f9b0f-913d-4001-86f7-c046cac39d0f",
+            "laborHours": 16.530000000000005,
+            "technicianHours": 17.90,
+            "invoicedL": 1072.0000
+        },
+        {
+            "employeeId": "20b69ace-622d-4fab-bf14-6125ea465b6a",
+            "laborHours": 17.66000000000001,
+            "technicianHours": 19.50,
+            "invoicedL": 850.5100
+        },
+        {
+            "employeeId": "20e6b4c6-53e7-42a0-a47a-723dfe726aea",
+            "laborHours": 45.800000000000004,
+            "technicianHours": 46.80,
+            "invoicedL": 5388.7000
+        },
+        {
+            "employeeId": "22fb9595-5896-4c2c-b599-599e38a88859",
+            "laborHours": 36.129999999999995,
+            "technicianHours": 33.63,
+            "invoicedL": 4172.5300
+        },
+        {
+            "employeeId": "23a25985-fad8-471a-8cc8-467d5527d9f6",
+            "laborHours": 19.500000000000004,
+            "technicianHours": 16.05,
+            "invoicedL": 1382.0100
+        },
+        {
+            "employeeId": "23a9e404-90f1-47b2-9118-75e2c9835f4c",
+            "laborHours": 8.3,
+            "technicianHours": 9.50,
+            "invoicedL": 1025.0500
+        },
+        {
+            "employeeId": "2755cc28-bcf6-471c-a85c-232e8ca902ca",
+            "laborHours": 30.45000000000001,
+            "technicianHours": 31.05,
+            "invoicedL": 2338.7700
+        },
+        {
+            "employeeId": "27cf5354-f0e2-46bf-965e-a27fa40c63d5",
+            "laborHours": 29.360000000000007,
+            "technicianHours": 33.90,
+            "invoicedL": 3026.0500
+        },
+        {
+            "employeeId": "2a8a1f79-3d74-4c15-a15d-810094c0c2e9",
+            "laborHours": 10.099999999999998,
+            "technicianHours": 11.90,
+            "invoicedL": 881.5900
+        },
+        {
+            "employeeId": "2b16f942-f74f-4dba-933d-fdc4c4583dee",
+            "laborHours": 10.850000000000001,
+            "technicianHours": 10.76,
+            "invoicedL": 1109.1000
+        },
+        {
+            "employeeId": "2b55366e-55b5-475e-819b-aa01b0601020",
+            "laborHours": 28.300000000000004,
+            "technicianHours": 27.80,
+            "invoicedL": 1037.0400
+        },
+        {
+            "employeeId": "2bd2f056-39e4-4660-85f3-45dc0fe63a65",
+            "laborHours": 3.5999999999999996,
+            "technicianHours": 1.90,
+            "invoicedL": 305.0000
+        },
+        {
+            "employeeId": "2bf0f71b-610c-4f88-8342-12d2f8e08075",
+            "laborHours": 40.52,
+            "technicianHours": 40.12,
+            "invoicedL": 5346.4900
+        },
+        {
+            "employeeId": "2ee93d40-08f0-4884-9d75-4b42458f5915",
+            "laborHours": 26.050000000000004,
+            "technicianHours": 15.95,
+            "invoicedL": 1161.5000
+        },
+        {
+            "employeeId": "2f388745-ed91-4389-8294-4ffadb09d773",
+            "laborHours": 26.51,
+            "technicianHours": 27.05,
+            "invoicedL": 2668.3000
+        },
+        {
+            "employeeId": "2f6454b6-43a3-4ed9-9b50-1fbbb9e715a1",
+            "laborHours": 6.8,
+            "technicianHours": 6.80,
+            "invoicedL": 412.0000
+        },
+        {
+            "employeeId": "2fc965af-b8de-409a-88c6-e569136d92e5",
+            "laborHours": 53.57,
+            "technicianHours": 54.39,
+            "invoicedL": 4294.6000
+        },
+        {
+            "employeeId": "30741505-ec13-47f7-8162-39e683b33826",
+            "laborHours": 14.000000000000004,
+            "technicianHours": 15.40,
+            "invoicedL": 962.3000
+        },
+        {
+            "employeeId": "30dec0c5-416d-4ec3-8054-c373c7df04a7",
+            "laborHours": 29.080000000000002,
+            "technicianHours": 30.04,
+            "invoicedL": 2829.8900
+        },
+        {
+            "employeeId": "330e313b-0991-47c2-b85d-341c3813096d",
+            "laborHours": 6.2299999999999995,
+            "technicianHours": 6.95,
+            "invoicedL": 496.0800
+        },
+        {
+            "employeeId": "3574a000-2828-401c-8bf8-79c101955573",
+            "laborHours": 10.8,
+            "technicianHours": 11.20,
+            "invoicedL": 819.1400
+        },
+        {
+            "employeeId": "367425f8-1861-4262-afc0-dfc26a8cc875",
+            "laborHours": 16.850000000000005,
+            "technicianHours": 19.85,
+            "invoicedL": 1345.6000
+        },
+        {
+            "employeeId": "3760c3e8-473f-4547-96b3-db617670ef4d",
+            "laborHours": 1.5,
+            "technicianHours": 1.70,
+            "invoicedL": 5.0500
+        },
+        {
+            "employeeId": "37779f3c-bc00-4bf8-9fe3-65f320e434ae",
+            "laborHours": 4.6,
+            "technicianHours": 1.00,
+            "invoicedL": 384.0000
+        },
+        {
+            "employeeId": "380d37cc-df3e-4895-b265-e953912eb9da",
+            "laborHours": 36.53,
+            "technicianHours": 36.93,
+            "invoicedL": 3949.8100
+        },
+        {
+            "employeeId": "39eb9811-f024-4dc4-8a5b-ac14e7e444c5",
+            "laborHours": 10.170000000000003,
+            "technicianHours": 10.15,
+            "invoicedL": 394.7500
+        },
+        {
+            "employeeId": "3d5a62f0-8bb9-476c-8734-b1b0bc9a398c",
+            "laborHours": 1.7,
+            "technicianHours": 1.70,
+            "invoicedL": 30.0000
+        },
+        {
+            "employeeId": "3de5a063-3965-443e-9257-8d5dc21222bc",
+            "laborHours": 16.700000000000003,
+            "technicianHours": 18.50,
+            "invoicedL": 1328.1100
+        },
+        {
+            "employeeId": "3f0ab669-4870-4c27-a5af-6e4fbb9ffea4",
+            "laborHours": 16.260000000000005,
+            "technicianHours": 17.60,
+            "invoicedL": 1503.7900
+        },
+        {
+            "employeeId": "3f32359d-42f8-44d3-aa1f-bd242d83703a",
+            "laborHours": 7.1,
+            "technicianHours": 11.10,
+            "invoicedL": 545.1700
+        },
+        {
+            "employeeId": "411d175e-200e-40a4-add4-d87c90969f39",
+            "laborHours": 36.56000000000002,
+            "technicianHours": 40.80,
+            "invoicedL": 3481.7900
+        },
+        {
+            "employeeId": "4385d70e-d779-4289-91fa-feca88a78692",
+            "laborHours": 55.589999999999996,
+            "technicianHours": 55.20,
+            "invoicedL": 7621.1700
+        },
+        {
+            "employeeId": "4511bbd9-4caf-4fc2-8874-6dc940601bb4",
+            "laborHours": 10.3,
+            "technicianHours": 13.70,
+            "invoicedL": 693.5700
+        },
+        {
+            "employeeId": "456c6f5d-a7fd-4aac-a51f-24f3671517cb",
+            "laborHours": 0.3,
+            "technicianHours": 0.30,
+            "invoicedL": 0.0000
+        },
+        {
+            "employeeId": "480f2de7-77c0-45f6-b3c9-ff0ad13520be",
+            "laborHours": 19.450000000000014,
+            "technicianHours": 21.25,
+            "invoicedL": 277.6600
+        },
+        {
+            "employeeId": "488a673c-82d8-4d2f-a42a-d8a612b8b86d",
+            "laborHours": 7.6999999999999975,
+            "technicianHours": 7.40,
+            "invoicedL": 200.0000
+        },
+        {
+            "employeeId": "48b4a1ad-87fc-4c32-8e11-d4383e303c60",
+            "laborHours": 40.0,
+            "technicianHours": 41.60,
+            "invoicedL": 3907.3200
+        },
+        {
+            "employeeId": "4be854a3-518f-437b-ba1e-36537ad88b74",
+            "laborHours": 39.38,
+            "technicianHours": 39.28,
+            "invoicedL": 5444.6500
+        },
+        {
+            "employeeId": "4c1c953e-9e30-45e2-bf83-dbcb76a677a2",
+            "laborHours": 20.700000000000017,
+            "technicianHours": 26.90,
+            "invoicedL": 941.4700
+        },
+        {
+            "employeeId": "4ce21137-90c4-4b55-b292-0277a9c49513",
+            "laborHours": 44.400000000000006,
+            "technicianHours": 44.40,
+            "invoicedL": 4703.3900
+        },
+        {
+            "employeeId": "4d4a5e27-bcc9-4a1d-b7c2-86a2917a0f28",
+            "laborHours": 13.450000000000005,
+            "technicianHours": 13.85,
+            "invoicedL": 857.7100
+        },
+        {
+            "employeeId": "4ffbe7df-96c1-4cd2-92b0-efe4bd1da93a",
+            "laborHours": 16.700000000000006,
+            "technicianHours": 19.55,
+            "invoicedL": 600.4000
+        },
+        {
+            "employeeId": "5149b8f0-698e-4f60-9b56-5e4843f16342",
+            "laborHours": 0.05,
+            "technicianHours": 0.00,
+            "invoicedL": 8.0000
+        },
+        {
+            "employeeId": "51f1c573-4a86-4a2a-a94e-ada75041068f",
+            "laborHours": 15.640000000000008,
+            "technicianHours": 16.90,
+            "invoicedL": 1041.9900
+        },
+        {
+            "employeeId": "528e3e27-179d-4f8d-af82-253cc63073c9",
+            "laborHours": 33.92,
+            "technicianHours": 35.16,
+            "invoicedL": 4186.5600
+        },
+        {
+            "employeeId": "544250f0-7ea5-40a4-a378-fcbaabad39b5",
+            "laborHours": 1.0,
+            "technicianHours": 1.00,
+            "invoicedL": 0.0000
+        },
+        {
+            "employeeId": "547e9bb8-7f3b-4138-9184-69bcf4f23532",
+            "laborHours": 51.230000000000004,
+            "technicianHours": 51.40,
+            "invoicedL": 5149.4000
+        },
+        {
+            "employeeId": "54fc5cfe-0b2e-4643-b8ff-700481977ec3",
+            "laborHours": 17.700000000000003,
+            "technicianHours": 17.70,
+            "invoicedL": 1901.0000
+        },
+        {
+            "employeeId": "5612121a-8f17-47a2-a766-f1e917714251",
+            "laborHours": 24.73,
+            "technicianHours": 24.73,
+            "invoicedL": 2603.5500
+        },
+        {
+            "employeeId": "57f05e47-c851-46ba-aff5-88b540542e1e",
+            "laborHours": 10.580000000000002,
+            "technicianHours": 12.15,
+            "invoicedL": 882.3300
+        },
+        {
+            "employeeId": "5a0a412e-d5bc-4710-b98e-37bfab14cc62",
+            "laborHours": 0.5,
+            "technicianHours": 0.50,
+            "invoicedL": 54.0000
+        },
+        {
+            "employeeId": "5ac7265f-2224-40e6-bfe3-4b4316a084ca",
+            "laborHours": 16.710000000000008,
+            "technicianHours": 18.85,
+            "invoicedL": 1079.0800
+        },
+        {
+            "employeeId": "5aea383d-1476-44cc-ae2c-9e9998db53f4",
+            "laborHours": 65.39999999999999,
+            "technicianHours": 58.75,
+            "invoicedL": 6336.2700
+        },
+        {
+            "employeeId": "5ba9218e-a4b6-4997-9828-2b903564f6bf",
+            "laborHours": 0.8,
+            "technicianHours": 0.80,
+            "invoicedL": 270.5000
+        },
+        {
+            "employeeId": "5bab1f9e-c644-423d-a22e-641b4a056c1c",
+            "laborHours": 40.3,
+            "technicianHours": 43.80,
+            "invoicedL": 3620.4500
+        },
+        {
+            "employeeId": "5be8888b-1f4e-4ea7-a860-944c7b7a1c80",
+            "laborHours": 11.300000000000004,
+            "technicianHours": 15.00,
+            "invoicedL": 720.2000
+        },
+        {
+            "employeeId": "5d33667f-ad4e-45b5-aa64-edef2f5516e0",
+            "laborHours": 28.7,
+            "technicianHours": 24.90,
+            "invoicedL": 3260.0000
+        },
+        {
+            "employeeId": "5db21767-1301-455a-ab4e-90aac4ec08c6",
+            "laborHours": 31.169999999999998,
+            "technicianHours": 33.07,
+            "invoicedL": 3495.5600
+        },
+        {
+            "employeeId": "5dcb9824-4e97-4545-901a-93bb6e49a1dd",
+            "laborHours": 22.849999999999998,
+            "technicianHours": 12.90,
+            "invoicedL": 960.0000
+        },
+        {
+            "employeeId": "5e2154e6-f81b-4ffa-950d-349258944b62",
+            "laborHours": 1.6,
+            "technicianHours": 2.10,
+            "invoicedL": 100.0000
+        },
+        {
+            "employeeId": "5e8cabe4-ab59-416c-9e68-c962c4bab68c",
+            "laborHours": 11.600000000000003,
+            "technicianHours": 11.20,
+            "invoicedL": 281.2000
+        },
+        {
+            "employeeId": "5ec1c7d2-9c6b-418b-9d4f-4f0adc74165a",
+            "laborHours": 27.60000000000001,
+            "technicianHours": 26.90,
+            "invoicedL": 2245.8500
+        },
+        {
+            "employeeId": "5f314e4a-5637-464a-9797-c25a90686c22",
+            "laborHours": 23.000000000000014,
+            "technicianHours": 22.85,
+            "invoicedL": 1295.1200
+        },
+        {
+            "employeeId": "60a6dd2b-6a77-4177-816a-821f57edd1d6",
+            "laborHours": 0.5,
+            "technicianHours": 0.50,
+            "invoicedL": 40.0000
+        },
+        {
+            "employeeId": "61e3b6f9-acee-401a-8179-23271a2a1975",
+            "laborHours": 17.240000000000002,
+            "technicianHours": 17.20,
+            "invoicedL": 2573.9900
+        },
+        {
+            "employeeId": "635ff8b5-0dd3-4ac3-bb71-0195eff52ad2",
+            "laborHours": 16.000000000000007,
+            "technicianHours": 19.40,
+            "invoicedL": 910.2500
+        },
+        {
+            "employeeId": "63d210f9-5945-42ad-bf11-2b06630b9f18",
+            "laborHours": 34.97,
+            "technicianHours": 38.47,
+            "invoicedL": 4053.1900
+        },
+        {
+            "employeeId": "6406c89a-5328-4c95-9ba0-0c1d40b1dbe4",
+            "laborHours": 8.85,
+            "technicianHours": 9.35,
+            "invoicedL": 499.9500
+        },
+        {
+            "employeeId": "64535960-6174-475f-bd9d-78f1562d3897",
+            "laborHours": 20.960000000000004,
+            "technicianHours": 20.66,
+            "invoicedL": 1484.7000
+        },
+        {
+            "employeeId": "64ce51f5-6b8d-4068-b224-ec5be7881b5d",
+            "laborHours": 21.22000000000001,
+            "technicianHours": 23.32,
+            "invoicedL": 1992.2300
+        },
+        {
+            "employeeId": "6582994f-a7e0-4879-9de6-1ff6e7fa407c",
+            "laborHours": 14.700000000000005,
+            "technicianHours": 12.25,
+            "invoicedL": 1192.0000
+        },
+        {
+            "employeeId": "65bf3fbb-4582-496a-8bda-373ec2a8f398",
+            "laborHours": 15.550000000000013,
+            "technicianHours": 20.70,
+            "invoicedL": 565.4800
+        },
+        {
+            "employeeId": "65ddd16d-7004-4aa4-a2b3-7460ab2098c9",
+            "laborHours": 6.02,
+            "technicianHours": 5.40,
+            "invoicedL": 319.3500
+        },
+        {
+            "employeeId": "667d9d5c-a7bc-41cd-ab67-35dd5a2e82c7",
+            "laborHours": 0.0,
+            "technicianHours": 0.00,
+            "invoicedL": 185.0000
+        },
+        {
+            "employeeId": "68d6126b-a6d0-4f2e-997d-b445484aa937",
+            "laborHours": 83.64999999999998,
+            "technicianHours": 85.45,
+            "invoicedL": 10547.8500
+        },
+        {
+            "employeeId": "69469091-19b9-4f04-8c0d-10853beb0c11",
+            "laborHours": -1.3,
+            "technicianHours": 0.00,
+            "invoicedL": -200.0000
+        },
+        {
+            "employeeId": "69f26745-6a54-4c45-b4ff-caf5bffd25f6",
+            "laborHours": 9.25,
+            "technicianHours": 9.25,
+            "invoicedL": 290.0000
+        },
+        {
+            "employeeId": "6b55b4f5-5b5d-4564-a56f-140cdde18858",
+            "laborHours": 30.65000000000002,
+            "technicianHours": 34.85,
+            "invoicedL": 2570.8100
+        },
+        {
+            "employeeId": "6d105dd7-4afb-44e1-a011-063bddc4941c",
+            "laborHours": 13.999999999999998,
+            "technicianHours": 14.30,
+            "invoicedL": 1447.7700
+        },
+        {
+            "employeeId": "6dce06f1-5c98-434e-9ae9-2276cd7985ea",
+            "laborHours": 14.650000000000004,
+            "technicianHours": 16.25,
+            "invoicedL": 1060.9900
+        },
+        {
+            "employeeId": "6f4e607d-8925-401d-84ee-5cc941b6efa0",
+            "laborHours": 10.000000000000002,
+            "technicianHours": 11.70,
+            "invoicedL": 674.5700
+        },
+        {
+            "employeeId": "6f99fa69-e8f6-4571-867f-c07f6c826cd9",
+            "laborHours": 32.7,
+            "technicianHours": 30.80,
+            "invoicedL": 2585.8600
+        },
+        {
+            "employeeId": "6fafb025-6283-45df-9890-a5493ca7e8cb",
+            "laborHours": 19.48,
+            "technicianHours": 19.48,
+            "invoicedL": 2413.3500
+        },
+        {
+            "employeeId": "7127af5a-50c9-4e8a-86c0-bb2b1842ccd1",
+            "laborHours": 58.519999999999996,
+            "technicianHours": 59.19,
+            "invoicedL": 5257.9000
+        },
+        {
+            "employeeId": "71fd7302-01f5-4384-b36a-96856e92de77",
+            "laborHours": 0.0,
+            "technicianHours": 0.00,
+            "invoicedL": 379.9700
+        },
+        {
+            "employeeId": "723e8409-ff7e-4d5b-850b-74d2fa57965f",
+            "laborHours": 45.94999999999999,
+            "technicianHours": 47.45,
+            "invoicedL": 6292.3500
+        },
+        {
+            "employeeId": "74d94055-5e3b-4a22-9c59-28e8168ac51c",
+            "laborHours": 35.92999999999999,
+            "technicianHours": 37.33,
+            "invoicedL": 3155.5200
+        },
+        {
+            "employeeId": "787ec86c-8b57-475e-b22a-f313079d1c0b",
+            "laborHours": 7.459999999999998,
+            "technicianHours": 6.95,
+            "invoicedL": 454.7600
+        },
+        {
+            "employeeId": "79940ce8-6bae-40cc-b8d2-1cc06c756db6",
+            "laborHours": 18.1,
+            "technicianHours": 17.80,
+            "invoicedL": 1707.7600
+        },
+        {
+            "employeeId": "7ad974f1-d6e1-4330-a559-02d0574e6f43",
+            "laborHours": 14.600000000000001,
+            "technicianHours": 9.60,
+            "invoicedL": 720.8200
+        },
+        {
+            "employeeId": "7ba62a1e-ccdd-4a72-a106-e4917c5f4145",
+            "laborHours": 0.25,
+            "technicianHours": 0.25,
+            "invoicedL": 27.0000
+        },
+        {
+            "employeeId": "7bea5e71-2247-46f2-a0aa-0544a2bb30dc",
+            "laborHours": 28.850000000000016,
+            "technicianHours": 27.20,
+            "invoicedL": 1829.3300
+        },
+        {
+            "employeeId": "7d8b456b-5e6a-4c49-ab12-3556491cb143",
+            "laborHours": 3.5,
+            "technicianHours": 3.50,
+            "invoicedL": 465.0000
+        },
+        {
+            "employeeId": "81ed1064-3589-414f-be02-223585bb0eb0",
+            "laborHours": 5.3,
+            "technicianHours": 6.50,
+            "invoicedL": 508.7500
+        },
+        {
+            "employeeId": "827e9a9a-ef27-40f0-8fcd-e218536c4e83",
+            "laborHours": 21.86,
+            "technicianHours": 22.86,
+            "invoicedL": 2304.0500
+        },
+        {
+            "employeeId": "83856643-1fc4-4e70-afb3-d215629cfe57",
+            "laborHours": 13.750000000000002,
+            "technicianHours": 15.35,
+            "invoicedL": 1177.4600
+        },
+        {
+            "employeeId": "8606146d-00a2-48b3-97d3-df467191f17c",
+            "laborHours": 13.72000000000001,
+            "technicianHours": 14.80,
+            "invoicedL": 1079.2500
+        },
+        {
+            "employeeId": "864fdf2a-fea6-43ad-a880-ae6b2e0423c4",
+            "laborHours": 34.53,
+            "technicianHours": 30.95,
+            "invoicedL": 3073.0000
+        },
+        {
+            "employeeId": "86f75335-812c-4fda-b91b-3b9e73331015",
+            "laborHours": 78.49999999999999,
+            "technicianHours": 84.40,
+            "invoicedL": 9689.6500
+        },
+        {
+            "employeeId": "870e5e5c-332d-46e1-9886-cd7e3c08c8c2",
+            "laborHours": 34.4,
+            "technicianHours": 34.40,
+            "invoicedL": 435.0000
+        },
+        {
+            "employeeId": "8783ca4d-7747-4d88-b15c-5d1eb08394b2",
+            "laborHours": 10.500000000000002,
+            "technicianHours": 5.25,
+            "invoicedL": 1046.0500
+        },
+        {
+            "employeeId": "8866ece1-81bd-439b-8a64-51a3d425a937",
+            "laborHours": 29.910000000000004,
+            "technicianHours": 31.41,
+            "invoicedL": 3800.3100
+        },
+        {
+            "employeeId": "88d12a1b-8366-48f1-bfef-d55a6c2aaa1e",
+            "laborHours": 17.100000000000012,
+            "technicianHours": 21.60,
+            "invoicedL": 1033.0300
+        },
+        {
+            "employeeId": "8909ffa1-9577-4478-acec-05ce7a5d5c01",
+            "laborHours": 51.599999999999994,
+            "technicianHours": 52.50,
+            "invoicedL": 3942.8800
+        },
+        {
+            "employeeId": "893317d6-fa09-47ee-998b-b6f4a29c1171",
+            "laborHours": 42.6,
+            "technicianHours": 40.95,
+            "invoicedL": 4977.2900
+        },
+        {
+            "employeeId": "89b561d8-1c50-467d-967c-5ba1540803d0",
+            "laborHours": 22.750000000000018,
+            "technicianHours": 27.45,
+            "invoicedL": 1746.8100
+        },
+        {
+            "employeeId": "89db3abc-ccf7-4703-9455-5f318892b6d7",
+            "laborHours": 12.460000000000003,
+            "technicianHours": 12.60,
+            "invoicedL": 773.0000
+        },
+        {
+            "employeeId": "8ba91885-a7dc-4dbe-9095-45ddb7888f3f",
+            "laborHours": 3.0,
+            "technicianHours": 3.00,
+            "invoicedL": 300.0000
+        },
+        {
+            "employeeId": "8d93599d-8d74-47a6-84c2-ac1d33108963",
+            "laborHours": 9.5,
+            "technicianHours": 11.40,
+            "invoicedL": 812.2500
+        },
+        {
+            "employeeId": "8e961ed2-28ba-4358-9139-e1b8ef5e7cdb",
+            "laborHours": 11.9,
+            "technicianHours": 11.90,
+            "invoicedL": 1115.8500
+        },
+        {
+            "employeeId": "8ec6f320-8d1a-4774-aeff-c070304d8d7e",
+            "laborHours": 12.850000000000001,
+            "technicianHours": 13.13,
+            "invoicedL": 867.5600
+        },
+        {
+            "employeeId": "8f12aa2c-13b9-4858-9249-89560efd40f2",
+            "laborHours": 31.83,
+            "technicianHours": 32.23,
+            "invoicedL": 3949.5000
+        },
+        {
+            "employeeId": "8f4e7a85-4891-4999-8fbc-fd6ad0b92b34",
+            "laborHours": 4.999999999999999,
+            "technicianHours": 5.00,
+            "invoicedL": 247.5000
+        },
+        {
+            "employeeId": "91627b8e-5bb7-4f80-82d9-de3f68365f4b",
+            "laborHours": 14.400000000000007,
+            "technicianHours": 16.40,
+            "invoicedL": 397.4000
+        },
+        {
+            "employeeId": "923a7ed7-489d-4428-a15b-077c0910a331",
+            "laborHours": 40.72,
+            "technicianHours": 42.92,
+            "invoicedL": 5091.0000
+        },
+        {
+            "employeeId": "927aee4d-3c50-4323-9728-f7152ba5fa9b",
+            "laborHours": 13.700000000000008,
+            "technicianHours": 15.30,
+            "invoicedL": 563.2000
+        },
+        {
+            "employeeId": "92922dc5-719e-45b0-89fb-28cb8a6b7d50",
+            "laborHours": 17.5,
+            "technicianHours": 17.35,
+            "invoicedL": 2242.7500
+        },
+        {
+            "employeeId": "92d0cfc6-10ac-4ceb-931f-222a9f957e3a",
+            "laborHours": 3.45,
+            "technicianHours": 2.65,
+            "invoicedL": 818.5800
+        },
+        {
+            "employeeId": "92fba356-242a-42f0-a42e-f69e4b68ada8",
+            "laborHours": 0.0,
+            "technicianHours": 0.00,
+            "invoicedL": 14.0000
+        },
+        {
+            "employeeId": "939101a1-db87-4953-bcfc-c3c41598ca5f",
+            "laborHours": 0.3,
+            "technicianHours": 0.50,
+            "invoicedL": 18.0000
+        },
+        {
+            "employeeId": "939b897f-ad59-434b-a100-063f62884780",
+            "laborHours": 14.950000000000006,
+            "technicianHours": 17.25,
+            "invoicedL": 1079.5600
+        },
+        {
+            "employeeId": "93b262b3-c2c7-4238-a87d-1147162e0a1d",
+            "laborHours": 17.25,
+            "technicianHours": 15.60,
+            "invoicedL": 1039.3100
+        },
+        {
+            "employeeId": "968cbf56-9193-413c-879b-952f8c173f27",
+            "laborHours": 23.400000000000002,
+            "technicianHours": 23.10,
+            "invoicedL": 2812.7100
+        },
+        {
+            "employeeId": "97c0d0f9-d14b-40b6-afb7-e57c00e7cf4f",
+            "laborHours": 95.74999999999999,
+            "technicianHours": 96.35,
+            "invoicedL": 8125.3900
+        },
+        {
+            "employeeId": "97f99a4b-2bd0-48ae-9713-b8558f5e84b3",
+            "laborHours": 51.199999999999996,
+            "technicianHours": 53.00,
+            "invoicedL": 4413.0500
+        },
+        {
+            "employeeId": "98846f69-b11b-4903-b52a-9a96142b0091",
+            "laborHours": 6.749999999999999,
+            "technicianHours": 10.95,
+            "invoicedL": 343.5800
+        },
+        {
+            "employeeId": "99853c80-d32f-4e85-8c44-d1b84d8f687a",
+            "laborHours": 33.900000000000006,
+            "technicianHours": 34.20,
+            "invoicedL": 3888.3900
+        },
+        {
+            "employeeId": "99d15ab6-03c2-4108-b89d-88b33d25726e",
+            "laborHours": 10.400000000000004,
+            "technicianHours": 11.45,
+            "invoicedL": 923.4000
+        },
+        {
+            "employeeId": "9a6d0c8c-7602-4005-adc1-9f1e53f403f4",
+            "laborHours": 13.450000000000006,
+            "technicianHours": 11.25,
+            "invoicedL": 1025.9900
+        },
+        {
+            "employeeId": "9ba2f04e-493b-4425-be75-da21feade0c5",
+            "laborHours": 0.5,
+            "technicianHours": 0.50,
+            "invoicedL": 54.0000
+        },
+        {
+            "employeeId": "9bdc7fe8-752e-4666-abc6-5df057c8a3ba",
+            "laborHours": 35.11000000000001,
+            "technicianHours": 22.00,
+            "invoicedL": 1663.8100
+        },
+        {
+            "employeeId": "9d047a9f-0a1b-470d-8bf5-4b119a426c56",
+            "laborHours": 42.59999999999999,
+            "technicianHours": 46.00,
+            "invoicedL": 3841.4000
+        },
+        {
+            "employeeId": "9d20f7ee-0455-4884-b18c-9b8ec8a3e807",
+            "laborHours": 0.31,
+            "technicianHours": 0.50,
+            "invoicedL": 2.3500
+        },
+        {
+            "employeeId": "9e4a8372-eb1e-4972-b5b7-f9a5cb4e3ad9",
+            "laborHours": 37.65,
+            "technicianHours": 43.25,
+            "invoicedL": 3072.5500
+        },
+        {
+            "employeeId": "a07b8f13-6f9a-4a2d-ab64-c8d5f7fcd8bf",
+            "laborHours": 9.55,
+            "technicianHours": 11.85,
+            "invoicedL": 499.8500
+        },
+        {
+            "employeeId": "a0cc923c-64b0-402d-8264-12cc5e807c4d",
+            "laborHours": 52.599999999999994,
+            "technicianHours": 53.60,
+            "invoicedL": 3848.3300
+        },
+        {
+            "employeeId": "a160af50-f3e7-486b-b8c1-dd2f954a5230",
+            "laborHours": 41.989999999999995,
+            "technicianHours": 43.39,
+            "invoicedL": 6128.2200
+        },
+        {
+            "employeeId": "a30b0c2d-146f-4d83-8af9-c7964575af25",
+            "laborHours": 38.56,
+            "technicianHours": 38.96,
+            "invoicedL": 3604.2200
+        },
+        {
+            "employeeId": "a51afa50-a320-4302-814a-c11553a9ffba",
+            "laborHours": 31.999999999999996,
+            "technicianHours": 31.10,
+            "invoicedL": 2495.0000
+        },
+        {
+            "employeeId": "a6e6e486-c70c-4c81-8f9f-a5bcc257df4c",
+            "laborHours": 5.3,
+            "technicianHours": 5.20,
+            "invoicedL": 645.0500
+        },
+        {
+            "employeeId": "a792ba31-02c6-49d9-97e8-70788246e543",
+            "laborHours": 40.27,
+            "technicianHours": 40.47,
+            "invoicedL": 4271.6000
+        },
+        {
+            "employeeId": "a8f6cda8-95c6-4664-9532-8b3057f87baf",
+            "laborHours": 31.3,
+            "technicianHours": 31.30,
+            "invoicedL": 2960.3000
+        },
+        {
+            "employeeId": "aa59192e-8ba0-4d35-9d43-a2e00b030770",
+            "laborHours": 47.54,
+            "technicianHours": 25.80,
+            "invoicedL": 1854.1300
+        },
+        {
+            "employeeId": "aa631a59-0e38-46e3-adeb-180d2578de9c",
+            "laborHours": 32.650000000000006,
+            "technicianHours": 35.95,
+            "invoicedL": 3204.7300
+        },
+        {
+            "employeeId": "aaa4a770-24e0-4970-b8fe-eaa2747e759f",
+            "laborHours": 37.199999999999996,
+            "technicianHours": 38.41,
+            "invoicedL": 4791.1400
+        },
+        {
+            "employeeId": "ab317f09-95b6-44ef-9a2e-bc14cf248d0a",
+            "laborHours": 30.550000000000008,
+            "technicianHours": 35.35,
+            "invoicedL": 1555.1400
+        },
+        {
+            "employeeId": "accbc09e-74de-41ed-92f7-6f574c94d4da",
+            "laborHours": 26.570000000000004,
+            "technicianHours": 30.37,
+            "invoicedL": 1298.6900
+        },
+        {
+            "employeeId": "ada777ce-b13e-4303-8bd6-952a10700e73",
+            "laborHours": 15.60000000000001,
+            "technicianHours": 18.00,
+            "invoicedL": 494.8400
+        },
+        {
+            "employeeId": "ae6c9fb3-174e-4944-8ea3-046c9fc0536c",
+            "laborHours": 0.55,
+            "technicianHours": 0.55,
+            "invoicedL": 30.0000
+        },
+        {
+            "employeeId": "aeeff9a4-5c89-4a10-8533-544dc0365463",
+            "laborHours": 11.89,
+            "technicianHours": 7.80,
+            "invoicedL": 776.6400
+        },
+        {
+            "employeeId": "aefc61f1-ff76-423e-b719-2ac19bd5dd89",
+            "laborHours": 7.799999999999999,
+            "technicianHours": 7.80,
+            "invoicedL": 830.0000
+        },
+        {
+            "employeeId": "af9e73fc-01f0-4bf5-b2a7-5db816612ec4",
+            "laborHours": 9.500000000000002,
+            "technicianHours": 10.30,
+            "invoicedL": 485.0000
+        },
+        {
+            "employeeId": "b0ac6b57-b65d-4835-bbc8-b4cebc3fa71a",
+            "laborHours": 14.450000000000003,
+            "technicianHours": 15.95,
+            "invoicedL": 1444.7400
+        },
+        {
+            "employeeId": "b0f5fce7-027a-4154-b405-51c250262f47",
+            "laborHours": 24.140000000000004,
+            "technicianHours": 25.15,
+            "invoicedL": 2073.6000
+        },
+        {
+            "employeeId": "b198b3b1-461a-4c3d-be49-46e7dff8d4d8",
+            "laborHours": 14.700000000000003,
+            "technicianHours": 13.90,
+            "invoicedL": 994.9500
+        },
+        {
+            "employeeId": "b22f27c7-7463-46da-9f07-54c05a2b7277",
+            "laborHours": 38.01,
+            "technicianHours": 36.11,
+            "invoicedL": 4893.4500
+        },
+        {
+            "employeeId": "b275f587-2da8-4986-ad41-5e5f5cf9aa81",
+            "laborHours": 8.8,
+            "technicianHours": 9.00,
+            "invoicedL": 642.0000
+        },
+        {
+            "employeeId": "b2b58220-3448-4364-af12-a1f2d9c2919b",
+            "laborHours": 13.940000000000001,
+            "technicianHours": 17.82,
+            "invoicedL": 1428.3500
+        },
+        {
+            "employeeId": "b3dc50af-bcb1-4791-adb8-fb27069c9cf1",
+            "laborHours": 44.62999999999998,
+            "technicianHours": 43.40,
+            "invoicedL": 3275.5200
+        },
+        {
+            "employeeId": "b48ee4aa-2490-4a4a-ad75-c6a730d35a4c",
+            "laborHours": 39.61999999999999,
+            "technicianHours": 39.60,
+            "invoicedL": 3803.1300
+        },
+        {
+            "employeeId": "b4964c6f-63d7-4546-a1ea-59ad6a978a85",
+            "laborHours": 18.44000000000001,
+            "technicianHours": 20.75,
+            "invoicedL": 965.4600
+        },
+        {
+            "employeeId": "b5e92bc2-1901-4ef3-be17-79884f516a4a",
+            "laborHours": 30.7,
+            "technicianHours": 30.70,
+            "invoicedL": 3397.4200
+        },
+        {
+            "employeeId": "b6a68d4a-a003-4a21-a194-2c3f04545c7a",
+            "laborHours": 28.150000000000006,
+            "technicianHours": 33.15,
+            "invoicedL": 1573.4000
+        },
+        {
+            "employeeId": "b71c535c-dbf7-4367-9ce2-daba25431d8d",
+            "laborHours": 0.25,
+            "technicianHours": 0.25,
+            "invoicedL": 27.0000
+        },
+        {
+            "employeeId": "b78d25a5-17d2-43d2-966d-b1ebf9fad4a4",
+            "laborHours": 62.3,
+            "technicianHours": 29.40,
+            "invoicedL": 2222.5000
+        },
+        {
+            "employeeId": "b922b2b7-74c4-400a-9227-537ee62ed952",
+            "laborHours": 8.950000000000001,
+            "technicianHours": 8.95,
+            "invoicedL": 690.0000
+        },
+        {
+            "employeeId": "ba9ed92b-e5e2-419a-9d84-ab08db38ecda",
+            "laborHours": 0.3,
+            "technicianHours": 0.30,
+            "invoicedL": 0.0000
+        },
+        {
+            "employeeId": "bbf225da-dcde-4667-b8ee-d8edbb2261b8",
+            "laborHours": 7.6499999999999995,
+            "technicianHours": 5.25,
+            "invoicedL": 640.0000
+        },
+        {
+            "employeeId": "bd8a6015-4d7a-47b3-8bb0-c52eeecda70c",
+            "laborHours": 93.39999999999996,
+            "technicianHours": 95.70,
+            "invoicedL": 6604.3900
+        },
+        {
+            "employeeId": "be6e12f1-3ed6-4a3a-9041-38efed570a1c",
+            "laborHours": 23.750000000000007,
+            "technicianHours": 24.55,
+            "invoicedL": 1704.5200
+        },
+        {
+            "employeeId": "bee1dfdb-390b-4c92-a31c-1b1319652039",
+            "laborHours": 31.9,
+            "technicianHours": 30.60,
+            "invoicedL": 3128.9600
+        },
+        {
+            "employeeId": "c0421686-0464-4924-bfac-a256d9a1fcd4",
+            "laborHours": 9.950000000000003,
+            "technicianHours": 10.10,
+            "invoicedL": 713.7100
+        },
+        {
+            "employeeId": "c10ec70b-d46b-4b0e-87f6-8a74704d6025",
+            "laborHours": 38.550000000000004,
+            "technicianHours": 38.05,
+            "invoicedL": 1206.7000
+        },
+        {
+            "employeeId": "c2472bcb-d755-41a1-882f-2fb07c37730a",
+            "laborHours": 39.879999999999995,
+            "technicianHours": 43.39,
+            "invoicedL": 3799.8000
+        },
+        {
+            "employeeId": "c2a68c95-252d-4f6f-8b91-9fa5e013035d",
+            "laborHours": 55.5,
+            "technicianHours": 58.10,
+            "invoicedL": 9840.4000
+        },
+        {
+            "employeeId": "c2b294d2-e255-4adf-b050-b086f175c6f4",
+            "laborHours": 2.5,
+            "technicianHours": 2.50,
+            "invoicedL": 60.0000
+        },
+        {
+            "employeeId": "c2f09d1f-b491-44ae-b483-10f4acd0e5d3",
+            "laborHours": 10.660000000000005,
+            "technicianHours": 10.10,
+            "invoicedL": 429.9000
+        },
+        {
+            "employeeId": "c3321c5e-2f1d-4f95-bcf8-850fd27f6a42",
+            "laborHours": 21.650000000000013,
+            "technicianHours": 24.75,
+            "invoicedL": 1642.2200
+        },
+        {
+            "employeeId": "c3558a28-cfe3-4fff-8408-8d5bb60fd7e3",
+            "laborHours": 10.420000000000002,
+            "technicianHours": 9.80,
+            "invoicedL": 511.7100
+        },
+        {
+            "employeeId": "c3f884e4-2e92-44e9-a225-d68c7e379a1b",
+            "laborHours": 23.150000000000002,
+            "technicianHours": 24.75,
+            "invoicedL": 2189.9600
+        },
+        {
+            "employeeId": "c4d42f58-d545-47e9-8511-e6950e9c610f",
+            "laborHours": 0.3,
+            "technicianHours": 0.50,
+            "invoicedL": 10.0500
+        },
+        {
+            "employeeId": "c4fd58b5-6204-4880-873a-c4eae2e95ad1",
+            "laborHours": 82.36000000000001,
+            "technicianHours": 82.66,
+            "invoicedL": 12121.6900
+        },
+        {
+            "employeeId": "c57700eb-e74e-4ae2-af39-362abdc521e9",
+            "laborHours": 37.79999999999999,
+            "technicianHours": 41.91,
+            "invoicedL": 4168.1300
+        },
+        {
+            "employeeId": "c595192e-bb31-4fd9-92cd-503422c33668",
+            "laborHours": 37.02,
+            "technicianHours": 41.00,
+            "invoicedL": 4068.8000
+        },
+        {
+            "employeeId": "c945f0ea-b2f4-4df8-aa4b-b23584cc3a54",
+            "laborHours": 13.700000000000001,
+            "technicianHours": 14.90,
+            "invoicedL": 1460.0700
+        },
+        {
+            "employeeId": "ca16fb4e-d679-4521-8ebd-331589d43162",
+            "laborHours": 5.75,
+            "technicianHours": 5.75,
+            "invoicedL": 435.0000
+        },
+        {
+            "employeeId": "ca1ab606-355a-4060-bf27-64d624b54237",
+            "laborHours": 15.600000000000001,
+            "technicianHours": 16.60,
+            "invoicedL": 1327.2900
+        },
+        {
+            "employeeId": "ca91f5cd-f629-4415-9f89-ce30cb4d3c0b",
+            "laborHours": 38.01,
+            "technicianHours": 38.01,
+            "invoicedL": 3843.7500
+        },
+        {
+            "employeeId": "cbb43a9c-8d31-4126-9530-2b84080cb46f",
+            "laborHours": 91.77000000000001,
+            "technicianHours": 94.90,
+            "invoicedL": 10633.9600
+        },
+        {
+            "employeeId": "cbefd2d2-6985-47f7-9f56-1862da162460",
+            "laborHours": 41.720000000000006,
+            "technicianHours": 41.72,
+            "invoicedL": 3594.8500
+        },
+        {
+            "employeeId": "cc876a3c-acd9-4cbc-a5d7-006daaddbef1",
+            "laborHours": 10.7,
+            "technicianHours": 10.60,
+            "invoicedL": 1318.0500
+        },
+        {
+            "employeeId": "ccbbcf48-e920-40a2-b23c-dd4c4b661099",
+            "laborHours": 0.6,
+            "technicianHours": 0.80,
+            "invoicedL": 25.3700
+        },
+        {
+            "employeeId": "ccefd8eb-a5f9-4462-b97e-6a76d94545b9",
+            "laborHours": 6.599999999999999,
+            "technicianHours": 7.60,
+            "invoicedL": 386.2500
+        },
+        {
+            "employeeId": "ccf268e2-785f-41cc-af08-d37dd3c058dc",
+            "laborHours": 11.450000000000003,
+            "technicianHours": 15.65,
+            "invoicedL": 319.1400
+        },
+        {
+            "employeeId": "cd92a9ba-9a05-4462-8012-48182fa847bc",
+            "laborHours": 15.090000000000003,
+            "technicianHours": 15.35,
+            "invoicedL": 1247.2000
+        },
+        {
+            "employeeId": "ce6f2823-22dc-4762-a1ae-54821dbd8dde",
+            "laborHours": 35.05000000000001,
+            "technicianHours": 33.95,
+            "invoicedL": 2990.9100
+        },
+        {
+            "employeeId": "d13cbe7f-d44a-4d4e-a994-7bc649c27375",
+            "laborHours": 1.0,
+            "technicianHours": 1.00,
+            "invoicedL": 110.0000
+        },
+        {
+            "employeeId": "d2152e93-6730-4678-896a-752762c8a783",
+            "laborHours": 16.300000000000008,
+            "technicianHours": 16.05,
+            "invoicedL": 838.1000
+        },
+        {
+            "employeeId": "d23f048b-c72a-4c2c-b0aa-a27eb3d2a45f",
+            "laborHours": 5.14,
+            "technicianHours": 5.50,
+            "invoicedL": 275.6500
+        },
+        {
+            "employeeId": "d2a18018-067d-40f9-81e0-4ce49cd9cfcc",
+            "laborHours": 17.650000000000002,
+            "technicianHours": 18.83,
+            "invoicedL": 673.1000
+        },
+        {
+            "employeeId": "d34d6b3a-b1ab-4260-a3ed-a7f3ec2d90f8",
+            "laborHours": 1.0,
+            "technicianHours": 1.00,
+            "invoicedL": 52.0000
+        },
+        {
+            "employeeId": "d35043dc-bc30-4326-be96-8fa675bc822c",
+            "laborHours": 10.19,
+            "technicianHours": 7.94,
+            "invoicedL": 969.6900
+        },
+        {
+            "employeeId": "d3591fdd-0e15-4921-a55c-c53e071b704d",
+            "laborHours": 43.900000000000006,
+            "technicianHours": 43.95,
+            "invoicedL": 3957.2800
+        },
+        {
+            "employeeId": "d4a6b988-a53a-4c2a-a88a-87038f2b8081",
+            "laborHours": 30.180000000000003,
+            "technicianHours": 30.97,
+            "invoicedL": 2703.8000
+        },
+        {
+            "employeeId": "d4f7cb45-9c10-4041-bcc2-4bd332a3b8e5",
+            "laborHours": 0.25,
+            "technicianHours": 0.25,
+            "invoicedL": 24.9500
+        },
+        {
+            "employeeId": "d6576f9a-d1f6-45c8-8d46-160bd8d1546d",
+            "laborHours": 18.3,
+            "technicianHours": 18.30,
+            "invoicedL": 2086.6900
+        },
+        {
+            "employeeId": "dc20e488-6aa4-467d-a7dd-eec4c1ff37f1",
+            "laborHours": 39.54999999999999,
+            "technicianHours": 43.45,
+            "invoicedL": 5054.9000
+        },
+        {
+            "employeeId": "ddad3f6f-545a-43f1-9fb8-85174a306086",
+            "laborHours": 12.06,
+            "technicianHours": 13.06,
+            "invoicedL": 394.0600
+        },
+        {
+            "employeeId": "de7f8e08-3867-4e83-aab9-ecfc0a6a7044",
+            "laborHours": 14.800000000000004,
+            "technicianHours": 18.40,
+            "invoicedL": 710.2200
+        },
+        {
+            "employeeId": "dec009f9-47a1-49b8-9919-09fe9c9a0397",
+            "laborHours": 40.99999999999999,
+            "technicianHours": 40.10,
+            "invoicedL": 4797.5600
+        },
+        {
+            "employeeId": "dfaa26ce-592d-424c-b847-433997d25f4e",
+            "laborHours": 17.210000000000008,
+            "technicianHours": 19.55,
+            "invoicedL": 1169.1000
+        },
+        {
+            "employeeId": "e10beeb6-f4d7-4c7b-bc4b-714c6084ecad",
+            "laborHours": 28.170000000000016,
+            "technicianHours": 30.17,
+            "invoicedL": 1239.7900
+        },
+        {
+            "employeeId": "e1569b5f-9e28-4929-a8fb-c51a27303280",
+            "laborHours": 20.78000000000001,
+            "technicianHours": 21.90,
+            "invoicedL": 1608.6500
+        },
+        {
+            "employeeId": "e2165676-b6a4-4fb8-b352-07a6166a4610",
+            "laborHours": 24.879999999999995,
+            "technicianHours": 24.88,
+            "invoicedL": 3129.1500
+        },
+        {
+            "employeeId": "e34a4ad3-349e-4c15-8893-a81ae377359d",
+            "laborHours": 1.45,
+            "technicianHours": 1.00,
+            "invoicedL": 93.0000
+        },
+        {
+            "employeeId": "e404a3c6-bfe9-46c4-b992-d20baf1d3b31",
+            "laborHours": 35.540000000000006,
+            "technicianHours": 35.34,
+            "invoicedL": 4092.6200
+        },
+        {
+            "employeeId": "e47980b1-14ff-447e-8e6e-db4260704e8f",
+            "laborHours": 23.760000000000005,
+            "technicianHours": 23.65,
+            "invoicedL": 2177.3900
+        },
+        {
+            "employeeId": "e4aad68b-5a66-4cff-8650-c2e0cba8f533",
+            "laborHours": 9.8,
+            "technicianHours": 10.60,
+            "invoicedL": 744.9900
+        },
+        {
+            "employeeId": "e5176b6e-4d4a-4b64-87d7-0285a50a7fd8",
+            "laborHours": 33.5,
+            "technicianHours": 33.50,
+            "invoicedL": 1140.0000
+        },
+        {
+            "employeeId": "e51e1713-37ac-4fca-a3d2-a201a0320421",
+            "laborHours": 16.750000000000007,
+            "technicianHours": 16.95,
+            "invoicedL": 921.1500
+        },
+        {
+            "employeeId": "e51f0f47-3b58-451c-969b-190db0bf54fe",
+            "laborHours": 19.25000000000001,
+            "technicianHours": 20.85,
+            "invoicedL": 1308.7100
+        },
+        {
+            "employeeId": "e5a5949c-aa14-4b43-ab72-391a788a73dd",
+            "laborHours": 18.240000000000006,
+            "technicianHours": 16.25,
+            "invoicedL": 1028.3500
+        },
+        {
+            "employeeId": "e92d070d-d60f-4c2e-b842-9c7b6233c169",
+            "laborHours": 26.39,
+            "technicianHours": 26.79,
+            "invoicedL": 2551.7200
+        },
+        {
+            "employeeId": "e99762bf-c778-4bd8-9918-fdb03179f84d",
+            "laborHours": 16.33,
+            "technicianHours": 14.39,
+            "invoicedL": 2366.4000
+        },
+        {
+            "employeeId": "e9deef2a-6cd6-42c8-83e6-e7fb35832082",
+            "laborHours": 26.950000000000014,
+            "technicianHours": 24.15,
+            "invoicedL": 1619.4400
+        },
+        {
+            "employeeId": "e9ff6f12-49ee-4ddd-b78d-f6c4d15755fb",
+            "laborHours": 3.25,
+            "technicianHours": 3.25,
+            "invoicedL": 319.1500
+        },
+        {
+            "employeeId": "ebfe1e40-f49d-40bc-84b3-e214c6612abf",
+            "laborHours": 9.85,
+            "technicianHours": 11.05,
+            "invoicedL": 673.1400
+        },
+        {
+            "employeeId": "eea276e3-1d50-4424-a099-ae596fd83fdf",
+            "laborHours": 1.3,
+            "technicianHours": 1.50,
+            "invoicedL": 90.0100
+        },
+        {
+            "employeeId": "ef7c9ff7-3b7c-4851-892a-c5b3fe6a3e4d",
+            "laborHours": 39.75,
+            "technicianHours": 57.45,
+            "invoicedL": 5202.0000
+        },
+        {
+            "employeeId": "f03a21d1-374d-4fa4-a236-677bcf0875c9",
+            "laborHours": 0.3,
+            "technicianHours": 0.30,
+            "invoicedL": 0.0000
+        },
+        {
+            "employeeId": "f0b2f1e6-730e-4901-aa07-1383e3b4552e",
+            "laborHours": 20.220000000000002,
+            "technicianHours": 20.62,
+            "invoicedL": 1592.9200
+        },
+        {
+            "employeeId": "f145a8ef-0d70-431c-84b3-c1e7a7f7d119",
+            "laborHours": 24.8,
+            "technicianHours": 24.60,
+            "invoicedL": 2189.7000
+        },
+        {
+            "employeeId": "f3b8db91-caa5-4c26-9c4f-c2dc7f1146ff",
+            "laborHours": 0.0,
+            "technicianHours": 0.30,
+            "invoicedL": 0.0000
+        },
+        {
+            "employeeId": "f5265917-6051-41f6-806b-1b7f2bd9f700",
+            "laborHours": 7.149999999999999,
+            "technicianHours": 7.95,
+            "invoicedL": 412.9600
+        },
+        {
+            "employeeId": "f5f35568-fec0-4fe6-988d-15ca1c151d89",
+            "laborHours": 32.7,
+            "technicianHours": 32.95,
+            "invoicedL": 3224.7200
+        },
+        {
+            "employeeId": "f5f65c43-2f63-4694-8c56-f4ddcfeedb9d",
+            "laborHours": 14.150000000000006,
+            "technicianHours": 13.35,
+            "invoicedL": 728.2700
+        },
+        {
+            "employeeId": "f842597f-63fa-4ea1-9e23-60f20a80c296",
+            "laborHours": 42.76,
+            "technicianHours": 40.91,
+            "invoicedL": 5705.4500
+        },
+        {
+            "employeeId": "fbe1b00b-c577-4475-bb10-36d95cdf4088",
+            "laborHours": 67.84,
+            "technicianHours": 66.29,
+            "invoicedL": 8867.1800
+        },
+        {
+            "employeeId": "fc192454-2aaa-4748-b38e-b594e496a487",
+            "laborHours": 19.750000000000007,
+            "technicianHours": 22.35,
+            "invoicedL": 1508.5800
+        },
+        {
+            "employeeId": "fd086dcc-a347-4676-a1d8-a705820b4763",
+            "laborHours": 16.870000000000005,
+            "technicianHours": 17.10,
+            "invoicedL": 891.2200
+        },
+        {
+            "employeeId": "fd9bd12a-25d1-4f23-af2c-c4357d2aa885",
+            "laborHours": 10.640000000000004,
+            "technicianHours": 8.60,
+            "invoicedL": 1252.8000
+        }
+    ]
+}

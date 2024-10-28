@@ -173,8 +173,18 @@ def order_summary(summary_worksheet):
     # Sort data based on the ratio of values in columns 4 and 3 (indices 3 and 2)
     sorted_data = sorted(data_without_last_col, key=lambda x: clean_currency_value(x[3]) / clean_currency_value(x[2]) if x[2] and clean_currency_value(x[2]) != 0 else 0)
 
-    # Combine the header (without the last column), sorted data, and footer (without the last column)
-    final_data = [headers[:-1]] + sorted_data + [footer[:-1]]
+    # Initialize the final_data list with the headers
+    final_data = [headers[:-1]]
+
+    # Add each row of sorted_data to final_data, cleaning only the numeric columns (3rd and onward)
+    for row in sorted_data:
+        formatted_row = row[:2]  # Start with the first and second columns as text
+        for cell in row[2:]:  # Clean only the numeric columns
+            if cell != '':
+                formatted_row.append(clean_currency_value(cell))
+            else:
+                formatted_row.append('')
+        final_data.append(formatted_row)
 
     # Determine the last column based on the number of columns in the data (after excluding the last column)
     last_col_letter = chr(64 + len(final_data[0]))  # Convert number to column letter (e.g., 1 -> A, 2 -> B, ...)
@@ -182,14 +192,6 @@ def order_summary(summary_worksheet):
     
     # Update the worksheet with the combined data
     summary_worksheet.update(range_str, final_data)
-
-
-
-        
-            
-
-
-
 
 
 summary_worksheet = get_or_create_sheet(summary_spreadsheet, execute_on_date)
