@@ -1,7 +1,7 @@
 import gspread
 import requests
 import configparser
-
+from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime, timedelta
 
@@ -17,6 +17,9 @@ scopes_string = ' '.join(scope)
 creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b730c6f614.json', scopes_string)
 client = gspread.authorize(creds)
 
+# Set up Google Sheets API client
+service = build('sheets', 'v4', credentials=creds)
+
 config = configparser.ConfigParser()
 config.read("config/config.ini")
 x_api_key = config["API"]["X-API-Key"]
@@ -25,6 +28,46 @@ summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 pnl_spreadsheet = client.open_by_key(pnl_spreadsheet_id)
 
 
+def recreate_sheets_from_master(service, spreadsheet_id, source_sheet_id, target_sheet_names):
+    """
+    Deletes the first four sheets and recreates them as copies of the master sheet.
+    
+    Args:
+        service: The Google Sheets API service instance.
+        spreadsheet_id (str): The ID of the spreadsheet.
+        source_sheet_id (int): The ID of the source (master) sheet to duplicate.
+        target_sheet_names (list of str): Names of the new sheets to create.
+    """
+    # Get the spreadsheet details to identify sheet IDs
+    spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+    sheet_ids_to_delete = []
+
+    # Collect the sheet IDs of the first four sheets to delete
+    for sheet in spreadsheet['sheets'][:4]:  # Assuming the first four sheets are the ones to replace
+        sheet_ids_to_delete.append(sheet['properties']['sheetId'])
+
+    # Prepare delete requests
+    delete_requests = [{"deleteSheet": {"sheetId": sheet_id}} for sheet_id in sheet_ids_to_delete]
+
+    # Prepare duplication requests
+    duplicate_requests = [
+        {
+            "duplicateSheet": {
+                "sourceSheetId": source_sheet_id,
+                "insertSheetIndex": i,  # Insert at the original index position
+                "newSheetName": target_sheet_names[i]
+            }
+        }
+        for i in range(len(target_sheet_names))
+    ]
+
+    # Combine delete and duplicate requests
+    requests = delete_requests + duplicate_requests
+
+    # Execute the batchUpdate to delete and recreate sheets
+    body = {"requests": requests}
+    service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
+    print("Deleted and recreated sheets as copies of 'weeksMaster'.")
 
 def get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet):
     # Fetch all data from the payment_sheet at once to reduce API calls
@@ -87,18 +130,26 @@ def get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet):
     pnl_sheet.update_cells(cells_to_update, value_input_option='USER_ENTERED')
     
 
-# Get a list of all sheets in the spreadsheet
-summary_sheets = summary_spreadsheet.worksheets()
-pnl_sheets = pnl_spreadsheet.worksheets()
+
+
+
+weeks_master_sheet = pnl_spreadsheet.worksheet("weeksMaster")
+target_sheet_names = ["week-1", "week-2", "week-3", "week-4"]
+source_sheet_id = weeks_master_sheet.id
+
+# Recreate the first four sheets from 'weeksMaster'
+recreate_sheets_from_master(service, pnl_spreadsheet_id, source_sheet_id, target_sheet_names)
 for i in range(0, 4):
     try:
-        payment_sheet = summary_sheets[i]
-        pnl_sheet=pnl_sheets[i]
-        to_date = datetime.strptime(payment_sheet.title, "%Y-%m-%d")- timedelta(days=1)
+        payment_sheet = summary_spreadsheet.get_worksheet(i)
+        pnl_sheet = pnl_spreadsheet.get_worksheet(i)
+        
+        # Set up date range for fetching data
+        to_date = datetime.strptime(payment_sheet.title, "%Y-%m-%d") - timedelta(days=1)
         from_date = to_date - timedelta(days=6)
         print(f"{from_date.strftime('%Y-%m-%d')} - {to_date.strftime('%Y-%m-%d')}")
-
-        # Get PnL data for the location
+        
+        # Fetch and update PnL data for the location
         get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet)
     except ValueError:
         # This handles cases where the sheet title does not match the expected date format
