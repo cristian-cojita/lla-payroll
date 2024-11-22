@@ -4,3 +4,4 @@ config.ini
 Sales01.xlsx
 .gitignore
 shop_sales_report.pdf
+__pycache__/util.cpython-312.pyc

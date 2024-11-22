@@ -28,47 +28,29 @@ summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 pnl_spreadsheet = client.open_by_key(pnl_spreadsheet_id)
 
 
-def recreate_sheets_from_master(service, spreadsheet_id, source_sheet_id, target_sheet_names):
+def recreate_weeks_sheets(pnl_spreadsheet):
     """
-    Deletes the first four sheets and recreates them as copies of the master sheet.
+    Deletes the first four sheets and recreates them as copies of the 'weeksMaster' sheet.
     
     Args:
-        service: The Google Sheets API service instance.
-        spreadsheet_id (str): The ID of the spreadsheet.
-        source_sheet_id (int): The ID of the source (master) sheet to duplicate.
-        target_sheet_names (list of str): Names of the new sheets to create.
+        pnl_spreadsheet: The gspread spreadsheet instance for the PnL sheet.
     """
-    # Get the spreadsheet details to identify sheet IDs
-    spreadsheet = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
-    sheet_ids_to_delete = []
+    target_sheet_names = ["week-4", "week-3", "week-2", "week-1"]
 
-    # Collect the sheet IDs of the first four sheets to delete
-    for sheet in spreadsheet['sheets'][:4]:  # Assuming the first four sheets are the ones to replace
-        sheet_ids_to_delete.append(sheet['properties']['sheetId'])
-
-    # Prepare delete requests
-    delete_requests = [{"deleteSheet": {"sheetId": sheet_id}} for sheet_id in sheet_ids_to_delete]
-
-    # Prepare duplication requests
-    duplicate_requests = [
-        {
-            "duplicateSheet": {
-                "sourceSheetId": source_sheet_id,
-                "insertSheetIndex": i,  # Insert at the original index position
-                "newSheetName": target_sheet_names[i]
-            }
-        }
-        for i in range(len(target_sheet_names))
-    ]
-
-    # Combine delete and duplicate requests
-    requests = delete_requests + duplicate_requests
-
-    # Execute the batchUpdate to delete and recreate sheets
-    body = {"requests": requests}
-    service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
-    print("Deleted and recreated sheets as copies of 'weeksMaster'.")
-
+    # Access the 'weeksMaster' sheet
+    master_sheet = pnl_spreadsheet.worksheet("weeksMaster")
+    
+    # Delete the first four sheets (assuming they are the ones to replace)
+    for sheet in pnl_spreadsheet.worksheets()[:4]:
+        pnl_spreadsheet.del_worksheet(sheet)
+    
+    # Duplicate the master sheet for each target sheet name
+    for sheet_name in target_sheet_names:
+        master_sheet.duplicate(new_sheet_name=sheet_name)
+    
+    print("Deleted the first four sheets and recreated them as copies of 'weeksMaster'.")
+    
+    
 def get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet):
     # Fetch all data from the payment_sheet at once to reduce API calls
     all_payment_data = payment_sheet.get_all_values()
@@ -133,12 +115,9 @@ def get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet):
 
 
 
-weeks_master_sheet = pnl_spreadsheet.worksheet("weeksMaster")
-target_sheet_names = ["week-1", "week-2", "week-3", "week-4"]
-source_sheet_id = weeks_master_sheet.id
 
 # Recreate the first four sheets from 'weeksMaster'
-recreate_sheets_from_master(service, pnl_spreadsheet_id, source_sheet_id, target_sheet_names)
+recreate_weeks_sheets(pnl_spreadsheet)
 for i in range(0, 4):
     try:
         payment_sheet = summary_spreadsheet.get_worksheet(i)
