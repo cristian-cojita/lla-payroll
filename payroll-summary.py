@@ -7,8 +7,8 @@ from gspread_formatting import get_effective_format
 
 from pathlib import Path
 
-main_spreadsheet_id="1sNzFxpxb3XxLRP2xAENd1LC0k6V113ZUTNH-vs5OMpA"
-second_spreadsheet_id="1DTEvWiKttZY0G7jL1SJiNIP1SWkm3w73XhdmTw-ph6U"
+main_spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
+second_spreadsheet_id="1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
 summary_spreadsheet_id="14LNQnrTL6P5jBvnb7cvBVYEu3KNweIyYpAGUnreN0E4"
 
 # Set up gspread
