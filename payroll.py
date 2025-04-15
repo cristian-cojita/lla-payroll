@@ -13,12 +13,10 @@ from pathlib import Path
 
 
 # main
-#old spreadsheet_id="1sNzFxpxb3XxLRP2xAENd1LC0k6V113ZUTNH-vs5OMpA"
 # spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
 
 
 # second
-# old spreadsheet_id = "1DTEvWiKttZY0G7jL1SJiNIP1SWkm3w73XhdmTw-ph6U"
 spreadsheet_id = "1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
 
 # test
@@ -144,7 +142,7 @@ def update_shop_data_from_api(main_worksheet, payroll, metric):
                     gspread.Cell(row, metric["Sales"], location["sales"])
                 )
                 cells_to_update.append(
-                    gspread.Cell(row, metric["Car Count"], location["carCount"])
+                    gspread.Cell(row, metric["CarBonus"], location["carBonus"])
                 )
                 cells_to_update.append(
                     gspread.Cell(row, metric["Alignments"], location["alignments"])
