@@ -9,6 +9,8 @@ from pathlib import Path
 
 main_spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
 second_spreadsheet_id="1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
+weekly_spreadsheet_id="1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
+
 summary_spreadsheet_id="14LNQnrTL6P5jBvnb7cvBVYEu3KNweIyYpAGUnreN0E4"
 
 # Set up gspread
@@ -19,6 +21,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b
 client = gspread.authorize(creds)
 main_spreadsheet = client.open_by_key(main_spreadsheet_id)
 second_spreadsheet = client.open_by_key(second_spreadsheet_id)
+weekly_spreadsheet = client.open_by_key(weekly_spreadsheet_id)
 summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 
 
@@ -197,5 +200,6 @@ def order_summary(summary_worksheet):
 summary_worksheet = get_or_create_sheet(summary_spreadsheet, execute_on_date)
 fill_summary(main_spreadsheet,summary_worksheet)
 fill_summary(second_spreadsheet,summary_worksheet)
+fill_summary(weekly_spreadsheet,summary_worksheet)
 order_summary(summary_worksheet)
 

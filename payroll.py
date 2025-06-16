@@ -15,12 +15,12 @@ from pathlib import Path
 # main
 # spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
 
-
 # second
-spreadsheet_id = "1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
+# spreadsheet_id = "1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
 
-# test
-# spreadsheet_id="1Bq46L6Bj0xAeqJ_mQm8wQ6SINzgMItgxqhcvjrKmUwg"
+# weekly payroll
+spreadsheet_id = "1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
+
 
 
 scope = [
@@ -370,7 +370,7 @@ if payroll:
 
     from_date, to_date, week_no, sheet_name = payroll
     # Write the API data to the main worksheet
-    print("Get ot create payroll sheet")
+    print("Get or create payroll sheet")
     main_worksheet = get_or_create_sheet(spreadsheet, sheet_name)
 
     result = update_shop_data_from_api(main_worksheet, payroll, metric)
