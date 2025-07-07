@@ -129,14 +129,14 @@ def update_shop_data_from_api(main_worksheet, payroll, metric):
     if "locations" in response_data:
         cells_to_update.append(gspread.Cell(2, metric["Date"], from_date))
         cells_to_update.append(gspread.Cell(3, metric["Date"], to_date))
+        # Fetch all location IDs from the worksheet once
+        worksheet_location_ids = main_worksheet.col_values(1)  # 1-based index
+
         for location in response_data["locations"]:
             print(location["name"])
             location_id = location["locationId"]
-            cell_found = main_worksheet.find(location_id, in_column=1)
-
-            # If locationId is found in the worksheet
-            if cell_found:
-                row = cell_found.row
+            if location_id in worksheet_location_ids:
+                row = worksheet_location_ids.index(location_id) + 1  # rows are 1-based
                 # Prepare the cells to update
                 cells_to_update.append(
                     gspread.Cell(row, metric["Sales"], location["sales"])
