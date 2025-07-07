@@ -11,15 +11,11 @@ from pathlib import Path
 
 
 
-
-# main
-# spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
-
-# second
-# spreadsheet_id = "1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
-
-# weekly payroll
-spreadsheet_id = "1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
+spreadsheet_configs = {
+    "PayrollCore": "18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0",
+    "PayrollClark": "1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ", 
+    "weekly_payroll": "1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
+}
 
 
 
@@ -35,7 +31,6 @@ creds = ServiceAccountCredentials.from_json_keyfile_name(
 )
 client = gspread.authorize(creds)
 drive_service = build('drive', 'v3', credentials=creds)
-spreadsheet = client.open_by_key(spreadsheet_id)
 
 config = configparser.ConfigParser()
 config.read("config/config.ini")
@@ -327,7 +322,7 @@ def get_payroll_settings(spreadsheet, payroll):
     }
     return metric_to_column
 
-def create_backup(spreadsheet):
+def create_backup(spreadsheet, spreadsheet_id):
     # Backup configuration
     backup_folder_id = "1iSsFLYs7v3P3Q8BmJBMJcMBN05Mzx53h"  # ID of the "Backup" folder
     today = datetime.date.today()
@@ -361,27 +356,36 @@ def create_backup(spreadsheet):
     print("Backup completed successfully.")
 
 
-# Create a backup file in the "Backup" folder
-create_backup(spreadsheet)
+# Main execution - process all spreadsheets
+for name, current_spreadsheet_id in spreadsheet_configs.items():
+    print(f"\n=== Processing {name} spreadsheet ===")
+        
+    spreadsheet = client.open_by_key(current_spreadsheet_id)
 
-payroll = get_payroll_period(spreadsheet, execute_on_date)
-if payroll:
-    metric = get_payroll_settings(spreadsheet, payroll)
+    # Create a backup file in the "Backup" folder
+    create_backup(spreadsheet, current_spreadsheet_id)
 
-    from_date, to_date, week_no, sheet_name = payroll
-    # Write the API data to the main worksheet
-    print("Get or create payroll sheet")
-    main_worksheet = get_or_create_sheet(spreadsheet, sheet_name)
+    payroll = get_payroll_period(spreadsheet, execute_on_date)
+    if payroll:
+        metric = get_payroll_settings(spreadsheet, payroll)
 
-    result = update_shop_data_from_api(main_worksheet, payroll, metric)
-    print(result)
+        from_date, to_date, week_no, sheet_name = payroll
+        # Write the API data to the main worksheet
+        print("Get or create payroll sheet")
+        main_worksheet = get_or_create_sheet(spreadsheet, sheet_name)
 
-    result = update_technicians_from_api(main_worksheet, payroll, metric)
-    print(result)
+        result = update_shop_data_from_api(main_worksheet, payroll, metric)
+        print(result)
 
-    result = update_attendance_from_api(main_worksheet, payroll, metric)
-    # result = update_attendance_from_file(main_worksheet, payroll, metric)
-    print(result)
+        result = update_technicians_from_api(main_worksheet, payroll, metric)
+        print(result)
 
-else:
-    print(f"No data found for Execute On date: {execute_on_date}")
+        result = update_attendance_from_api(main_worksheet, payroll, metric)
+        # result = update_attendance_from_file(main_worksheet, payroll, metric)
+        print(f"✅ {name} processed successfully")
+    else:
+        print(f"❌ No data found for Execute On date: {execute_on_date} in {name}")
+        
+    # Add a small delay to avoid rate limiting
+    import time
+    time.sleep(2)
