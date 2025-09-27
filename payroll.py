@@ -9,6 +9,8 @@ from gspread_formatting import get_effective_format
 from googleapiclient.discovery import build
 from pathlib import Path
 
+import util
+
 
 
 spreadsheet_configs = {
@@ -36,8 +38,7 @@ config = configparser.ConfigParser()
 config.read("config/config.ini")
 x_api_key = config["API"]["X-API-Key"]
 
-execute_on_date = config["Settings"]["execute_on_date"]
-
+execute_on_date = util.execute_on_date()
 
 def get_payroll_period(spreadsheet, execute_on_date):
     # Access the "Payroll" sheet

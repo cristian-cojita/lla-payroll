@@ -1,3 +1,4 @@
+import datetime
 from sqlalchemy import create_engine
 import configparser
 import psycopg2
@@ -35,4 +36,15 @@ def get_regions(engine):
     query = "SELECT r.id, r.name, r.color, r.order_no as region_order_no FROM regions r ORDER BY r.order_no desc"
     df = pd.read_sql_query(query, engine)
     return df
-    
+   
+   
+def execute_on_date():
+    # execute_on_date = config["Settings"]["execute_on_date"]
+    # Set execute_on_date to last Sunday
+    today = datetime.date.today()
+    days_since_sunday = today.weekday() + 1  # Monday = 0, so Sunday = 6, add 1 to get days since Sunday
+    if days_since_sunday == 7:  # If today is Sunday, get this Sunday
+        days_since_sunday = 0
+    last_sunday = today - datetime.timedelta(days=days_since_sunday)
+    execute_on_date = last_sunday.strftime('%Y-%m-%d') 
+    return execute_on_date

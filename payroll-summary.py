@@ -7,6 +7,8 @@ from gspread_formatting import get_effective_format
 
 from pathlib import Path
 
+import util
+
 main_spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
 second_spreadsheet_id="1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
 weekly_spreadsheet_id="1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
@@ -28,7 +30,8 @@ summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 # x_api_key = config['API']['X-API-Key']
-execute_on_date = config["Settings"]["execute_on_date"]
+execute_on_date = util.execute_on_date()
+
 
 
 def get_payroll_period(spreadsheet, execute_on_date):
