@@ -14,9 +14,7 @@ import util
 
 
 spreadsheet_configs = {
-    "PayrollCore": "18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0",
-    "PayrollClark": "1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ", 
-    "weekly_payroll": "1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
+    "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro"
 }
 
 
@@ -38,38 +36,16 @@ config = configparser.ConfigParser()
 config.read("config/config.ini")
 x_api_key = config["API"]["X-API-Key"]
 
-execute_on_date = util.execute_on_date()
-
-def get_payroll_period(spreadsheet, execute_on_date):
-    # Access the "Payroll" sheet
-    payroll_sheet = spreadsheet.worksheet("Payroll")
-
-    # Fetch all values from the sheet
-    all_values = payroll_sheet.get_all_values()
-
-    # Find the headers
-    headers = all_values[0]
-
-    # Search for the row with the matching "Execute On" date
-    for row in all_values[1:]:
-        if row[0] == execute_on_date:
-            from_date = row[headers.index("FromDate")]
-            to_date = row[headers.index("ToDate")]
-            week_no = row[headers.index("WeekNo")]
-            sheet_name = row[headers.index("SheetName")]
-
-            return from_date, to_date, week_no, sheet_name
-
-    # If the "Execute On" date is not found
-    return None
+payroll_info = util.execute_on_date()
 
 
-def get_or_create_sheet(spreadsheet, sheet_name):
+def get_or_create_sheet(spreadsheet):
+    sheet_name = payroll_info.execute_on_date
     # Check if worksheet with the name 'sheet_name' exists
     sheet_names = [sheet.title for sheet in spreadsheet.worksheets()]
     if sheet_name not in sheet_names:
         # Duplicate the "Master" worksheet and name it as 'sheet_name'
-        master_sheet = spreadsheet.worksheet("Master")
+        master_sheet = spreadsheet.worksheet("Paycor_Master")
         master_sheet.duplicate(new_sheet_name=sheet_name)
 
         # Re-fetch the new sheet to ensure we have the full worksheet object
@@ -105,17 +81,17 @@ def column_letter_to_number(column_letter):
     return number
 
 
-def update_shop_data_from_api(main_worksheet, payroll, metric):
+def update_shop_data_from_api(main_worksheet, metric):
     cells_to_update = []
-    from_date, to_date, week_no, sheet_name = payroll
+    
     print(
-        f"FromDate: {from_date}, ToDate: {to_date}, WeekNo: {week_no}, SheetName: {sheet_name}"
+        f"FromDate: {payroll_info.payroll_from}, ToDate: {payroll_info.payroll_to}"
     )
     print("Call LLA Api")
     # Define API URL, headers, and request body
     api_url = "https://api.jarvis-lla.com/api/v1.0/imports/payroll-locations"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
-    payload = {"fromDate": from_date, "toDate": to_date}
+    payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to}
 
     # Make the API call
     response = requests.post(api_url, headers=headers, json=payload)
@@ -123,8 +99,9 @@ def update_shop_data_from_api(main_worksheet, payroll, metric):
 
     print("Fill locations info")
     if "locations" in response_data:
-        cells_to_update.append(gspread.Cell(2, metric["Date"], from_date))
-        cells_to_update.append(gspread.Cell(3, metric["Date"], to_date))
+        # Write the payroll date range at the top of the sheet
+        cells_to_update.append(gspread.Cell(1, metric["Date"], payroll_info.payroll_from))
+        cells_to_update.append(gspread.Cell(2, metric["Date"], payroll_info.payroll_to))
         # Fetch all location IDs from the worksheet once
         worksheet_location_ids = main_worksheet.col_values(1)  # 1-based index
 
@@ -160,17 +137,16 @@ def update_shop_data_from_api(main_worksheet, payroll, metric):
     return "Shop data updated successfully"
 
 
-def update_technicians_from_api(main_worksheet, payroll, metric):
+def update_technicians_from_api(main_worksheet, metric):
     cells_to_update = []
-    from_date, to_date, week_no, sheet_name = payroll
     print(
-        f"FromDate: {from_date}, ToDate: {to_date}, WeekNo: {week_no}, SheetName: {sheet_name}"
+        f"FromDate: {payroll_info.payroll_from}, ToDate: {payroll_info.payroll_to}"
     )
     print("Call Technicians Summary Api")
     # Define API URL, headers, and request body
     api_url = "https://api.jarvis-lla.com/api/v1.0/imports/payroll-technicians-summary"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
-    payload = {"fromDate": from_date, "toDate": to_date}
+    payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to}
 
     # Make the API call
     response = requests.post(api_url, headers=headers, json=payload)
@@ -295,25 +271,13 @@ def update_attendance_from_file(main_worksheet, payroll, metric):
     return "Attendance data updated successfully"
 
 
-def get_payroll_settings(spreadsheet, payroll):
-    from_date, to_date, week_no, sheet_name = payroll
+def get_payroll_settings(spreadsheet):
     # Read the "Setting" worksheet to get the column mappings
     print("Read settings")
     setting_worksheet = spreadsheet.worksheet("Settings")
     metrics = setting_worksheet.col_values(1)  # Metrics are in the first column
-    if week_no == "Week1":
-        columns = setting_worksheet.col_values(
-            2
-        )  # Week1 columns are in the second column
-    elif week_no == "Week2":
-        columns = setting_worksheet.col_values(
-            3
-        )  # Week2 columns are in the third column
-
-    # Extend for more weeks as needed
-    else:
-        return f"Week {week_no} settings not found."
-
+    columns = setting_worksheet.col_values(2)  # Week columns are in the second column
+   
     # Create a dictionary mapping metrics to columns
     metric_to_column = dict(zip(metrics, columns))
     # Convert column letters to numbers
@@ -366,27 +330,23 @@ for name, current_spreadsheet_id in spreadsheet_configs.items():
     # Create a backup file in the "Backup" folder
     create_backup(spreadsheet, current_spreadsheet_id)
 
-    payroll = get_payroll_period(spreadsheet, execute_on_date)
-    if payroll:
-        metric = get_payroll_settings(spreadsheet, payroll)
+    metric = get_payroll_settings(spreadsheet)
 
-        from_date, to_date, week_no, sheet_name = payroll
-        # Write the API data to the main worksheet
-        print("Get or create payroll sheet")
-        main_worksheet = get_or_create_sheet(spreadsheet, sheet_name)
+  
+    # Write the API data to the main worksheet
+    print("Get or create payroll sheet")
+    main_worksheet = get_or_create_sheet(spreadsheet)
 
-        result = update_shop_data_from_api(main_worksheet, payroll, metric)
-        print(result)
+    result = update_shop_data_from_api(main_worksheet, metric)
+    print(result)
 
-        result = update_technicians_from_api(main_worksheet, payroll, metric)
-        print(result)
+    result = update_technicians_from_api(main_worksheet, payroll, metric)
+    print(result)
 
-        result = update_attendance_from_api(main_worksheet, payroll, metric)
-        # result = update_attendance_from_file(main_worksheet, payroll, metric)
-        print(f"✅ {name} processed successfully")
-    else:
-        print(f"❌ No data found for Execute On date: {execute_on_date} in {name}")
-        
+    result = update_attendance_from_api(main_worksheet, payroll, metric)
+    # result = update_attendance_from_file(main_worksheet, payroll, metric)
+    print(f"✅ {name} processed successfully")
+   
     # Add a small delay to avoid rate limiting
     import time
     time.sleep(2)
