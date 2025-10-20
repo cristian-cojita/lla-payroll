@@ -1,4 +1,5 @@
 import gspread
+import gspread.utils
 import requests
 import configparser
 import pandas as pd
@@ -10,12 +11,14 @@ from googleapiclient.discovery import build
 from pathlib import Path
 
 import util
-from types_payroll import DEFAULT_METRICS, PayrollMetrics
+from types_payroll import DEFAULT_PAYROLL_METRICS, PayrollMetrics
+from gspread_formatting import CellFormat, Color, format_cell_ranges
 
 
 
 spreadsheet_configs = {
     "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro"
+    # "CCPaycorPayroll": "1u9xaf1AGFItt5ErTTw0zvseuwJUOoUwDBx9FXuqoLQM"
 }
 
 
@@ -37,7 +40,8 @@ config = configparser.ConfigParser()
 config.read("config/config.ini")
 x_api_key = config["API"]["X-API-Key"]
 
-payroll_info = util.execute_on_date()
+payroll_info = util.get_period()
+cell_format_flat_rate = CellFormat(backgroundColor=Color(0, 1, 1))  # Cyan color
 
 
 def get_or_create_sheet(spreadsheet):
@@ -174,6 +178,7 @@ def update_technicians_from_api(main_worksheet, metric):
 
 def update_attendance_from_api(main_worksheet, metric):
     cells_to_update = []
+    cells_flat_rate = []
     print(
         f"FromDate: {payroll_info.payroll_from}, ToDate: {payroll_info.payroll_to}"
     )
@@ -198,26 +203,28 @@ def update_attendance_from_api(main_worksheet, metric):
 
             # If employee_id is found in the in-memory list
             if employee_id in employee_ids:
-                row = (
-                    employee_ids.index(employee_id) + 1
-                )  # Adding 1 because list indices start from 0 while worksheet rows start from 1
-                cells_to_update.append(
-                    gspread.Cell(row, metric.paycor_id, employee.get("paycorId", ""))
-                )
-                # Prepare the cells to update
-                hours = employee["workedHours"]
-                if hours > 40:
-                    cells_to_update.append(gspread.Cell(row, metric.hours, 40))  # type: ignore
-
-                    cells_to_update.append(
-                        gspread.Cell(row, metric.overtime, hours - 40)
-                    )
+                row = employee_ids.index(employee_id) + 1 # Adding 1 because list indices start from 0 while worksheet rows start from 1
+                if "paycorId" in employee:
+                    cells_to_update.append(gspread.Cell(row, metric.paycor_id, employee["paycorId"]))
+                cells_to_update.append(gspread.Cell(row, metric.clocked_hours, employee["workedHours"]))
+                
+                if(employee["paymentType"] == "FlatRate"):
+                    tech_h_cell = gspread.utils.rowcol_to_a1(row, metric.tech_h)
+                    hours_cell = gspread.utils.rowcol_to_a1(row, metric.hours)
+                    cells_to_update.append(gspread.Cell(row, metric.hours, '=' + tech_h_cell))
+                    cells_flat_rate.append((hours_cell, cell_format_flat_rate))
                 else:
-                    cells_to_update.append(gspread.Cell(row, metric.hours, hours))
-                    cells_to_update.append(gspread.Cell(row, metric.overtime, ""))
+                    cells_to_update.append(gspread.Cell(row, metric.hours, str(40 if employee["workedHours"] > 40 else employee["workedHours"])))
+
+                if "overtimeHours" in employee:
+                    cells_to_update.append(gspread.Cell(row, metric.overtime, employee["overtimeHours"]))
 
     if cells_to_update:
-        main_worksheet.update_cells(cells_to_update)
+        main_worksheet.update_cells(cells_to_update, value_input_option='USER_ENTERED')
+
+    # Apply cyan background to flat rate cells
+    if cells_flat_rate:
+        format_cell_ranges(main_worksheet, cells_flat_rate)
 
     return "Attendance data updated successfully"
 
@@ -265,7 +272,7 @@ for name, current_spreadsheet_id in spreadsheet_configs.items():
     # Create a backup file in the "Backup" folder
     create_backup(spreadsheet, current_spreadsheet_id)
 
-    metric: PayrollMetrics = DEFAULT_METRICS
+    metric: PayrollMetrics = DEFAULT_PAYROLL_METRICS
 
   
     # Write the API data to the main worksheet

@@ -42,7 +42,7 @@ def get_regions(engine) -> pd.DataFrame:
     return df
    
    
-def execute_on_date() -> PayrollInfo:
+def get_period() -> PayrollInfo:
     parser = configparser.ConfigParser()
     parser.read('config/config.ini')
     

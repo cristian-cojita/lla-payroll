@@ -7,11 +7,14 @@ from gspread_formatting import get_effective_format
 
 from pathlib import Path
 
+from types_payroll import DEFAULT_PAYROLL_METRICS, PayrollMetrics
 import util
 
-main_spreadsheet_id="18Dc99eLgn42nQXVdjy2NWhuWBjy2gC9ieifD4H7eud0"
-second_spreadsheet_id="1qZ2b3VxZ3KX39YGMl8THldv92fVA5gxnH5dUhhgq7XQ"
-weekly_spreadsheet_id="1r3hq77Fk4b0i175SWD-9sqEsmgy9JwhsuFl7GY-hgj8"
+spreadsheet_configs = {
+    "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro"
+    # "CCPaycorPayroll": "1u9xaf1AGFItt5ErTTw0zvseuwJUOoUwDBx9FXuqoLQM"
+}
+
 
 summary_spreadsheet_id="14LNQnrTL6P5jBvnb7cvBVYEu3KNweIyYpAGUnreN0E4"
 
@@ -21,43 +24,17 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 scopes_string = ' '.join(scope)
 creds = ServiceAccountCredentials.from_json_keyfile_name('config/lla-payroll-c3b730c6f614.json', scopes_string)
 client = gspread.authorize(creds)
-main_spreadsheet = client.open_by_key(main_spreadsheet_id)
-second_spreadsheet = client.open_by_key(second_spreadsheet_id)
-weekly_spreadsheet = client.open_by_key(weekly_spreadsheet_id)
+# main_spreadsheet = client.open_by_key(main_spreadsheet_id)
+# second_spreadsheet = client.open_by_key(second_spreadsheet_id)
+# weekly_spreadsheet = client.open_by_key(weekly_spreadsheet_id)
 summary_spreadsheet = client.open_by_key(summary_spreadsheet_id)
 
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 # x_api_key = config['API']['X-API-Key']
-execute_on_date = util.execute_on_date()
+payroll_period = util.get_period()
 
-
-
-def get_payroll_period(spreadsheet, execute_on_date):
-    # Access the "Payroll" sheet
-    payroll_sheet = spreadsheet.worksheet("Payroll")
-    
-    # Fetch all values from the sheet
-    all_values = payroll_sheet.get_all_values()
-    
-    # Find the headers
-    headers = all_values[0]
-    
-
-    
-    # Search for the row with the matching "Execute On" date
-    for row in all_values[1:]:
-        if row[0] == execute_on_date:
-            from_date = row[headers.index("FromDate")]
-            to_date = row[headers.index("ToDate")]
-            week_no = row[headers.index("WeekNo")]
-            sheet_name = row[headers.index("SheetName")]
-            
-            return from_date, to_date, week_no, sheet_name
-            
-    # If the "Execute On" date is not found
-    return None
 
 def column_letter_to_number(column_letter):
     """
@@ -74,27 +51,6 @@ def column_letter_to_number(column_letter):
         number += (ord(char) - 64) * (26 ** i)
     return number
 
-def get_payroll_settings(spreadsheet, payroll):
-
-    from_date, to_date, week_no, sheet_name = payroll
-     # Read the "Setting" worksheet to get the column mappings
-    print("Read settings")
-    setting_worksheet = spreadsheet.worksheet("Settings")
-    metrics = setting_worksheet.col_values(1)  # Metrics are in the first column
-    if week_no == "Week1":
-        columns = setting_worksheet.col_values(2)  # Week1 columns are in the second column
-    elif week_no == "Week2":
-        columns = setting_worksheet.col_values(3)  # Week2 columns are in the third column
-        
-    # Extend for more weeks as needed
-    else:
-        return f"Week {week_no} settings not found."
-    
-    # Create a dictionary mapping metrics to columns
-    metric_to_column = dict(zip(metrics, columns))
-    # Convert column letters to numbers
-    metric_to_column = {metric: column_letter_to_number(column) for metric, column in metric_to_column.items()}
-    return metric_to_column
 
 def get_or_create_sheet(spreadsheet, sheet_name):
     
@@ -127,11 +83,8 @@ def clean_currency_value(value):
 def fill_summary(from_spreadsheet, summary_worksheet):
     print("fill_summary")
     summary_shops = summary_worksheet.get_all_values()[1:]
-    payroll = get_payroll_period(from_spreadsheet, execute_on_date)
-    metric = get_payroll_settings(from_spreadsheet, payroll)
-    from_date, to_date, week_no, sheet_name = payroll
-    payroll_sheet = from_spreadsheet.worksheet(sheet_name)
-    
+    payroll_sheet = from_spreadsheet.worksheet(payroll_period.execute_on_date)
+    metric: PayrollMetrics = DEFAULT_PAYROLL_METRICS
     payroll_values = payroll_sheet.get_all_values()
     cells_to_update = []
 
@@ -141,14 +94,14 @@ def fill_summary(from_spreadsheet, summary_worksheet):
         total_overtime = total_payroll = sales = 0
 
         for payroll_row in payroll_values:
-            if found_shop_id and payroll_row[metric["Overtime"]-2] == "Personnel over":  
-                total_overtime = payroll_row[metric["Overtime"]-1]
-                total_payroll = payroll_row[metric["TotalPayroll"]-1]  
-                
+            if found_shop_id and payroll_row[metric.overtime-2] == "Personnel over":  
+                total_overtime = payroll_row[metric.overtime-1]
+                total_payroll = payroll_row[metric.total_payroll-1]  
+
                 break
             if payroll_row[0] == shop_id:  # when shop_id is found
                 found_shop_id = True
-                sales = payroll_row[metric["Sales"]-1]
+                sales = payroll_row[metric.sales-1]
 
         if found_shop_id:
             # Clean and convert the values
@@ -156,9 +109,9 @@ def fill_summary(from_spreadsheet, summary_worksheet):
             total_payroll = clean_currency_value(total_payroll)
             total_overtime = clean_currency_value(total_overtime)
             # Creating the Cell objects and adding them to the cells_to_update list
-            cells_to_update.append(gspread.Cell(row=i+2, col=3, value=sales))
-            cells_to_update.append(gspread.Cell(row=i+2, col=4, value=total_payroll))
-            cells_to_update.append(gspread.Cell(row=i+2, col=5, value=total_overtime))
+            cells_to_update.append(gspread.Cell(row=i+2, col=3, value=str(sales)))
+            cells_to_update.append(gspread.Cell(row=i+2, col=4, value=str(total_payroll)))
+            cells_to_update.append(gspread.Cell(row=i+2, col=5, value=str(total_overtime)))
 
     # Batch update the cells
     summary_worksheet.update_cells(cells_to_update)
@@ -200,9 +153,10 @@ def order_summary(summary_worksheet):
     summary_worksheet.update(range_str, final_data)
 
 
-summary_worksheet = get_or_create_sheet(summary_spreadsheet, execute_on_date)
-fill_summary(main_spreadsheet,summary_worksheet)
-fill_summary(second_spreadsheet,summary_worksheet)
-fill_summary(weekly_spreadsheet,summary_worksheet)
+summary_worksheet = get_or_create_sheet(summary_spreadsheet, payroll_period.execute_on_date)
+for name, current_spreadsheet_id in spreadsheet_configs.items():
+    current_spreadsheet = client.open_by_key(current_spreadsheet_id)
+    fill_summary(current_spreadsheet, summary_worksheet)
+    
 order_summary(summary_worksheet)
 
