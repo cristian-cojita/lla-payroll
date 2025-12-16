@@ -17,8 +17,9 @@ from gspread_formatting import CellFormat, Color, format_cell_ranges
 
 
 spreadsheet_configs = {
-    "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro"
-    # "CCPaycorPayroll": "1u9xaf1AGFItt5ErTTw0zvseuwJUOoUwDBx9FXuqoLQM"
+    # "PaycorPayroll2026": "1sbywsk3A3xdyO3280-GTd34tyHwwgzMCcWVLuJBhQoE",
+    "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro",
+    "PaycorOfficePayroll": "15a4QNJ36WCu0Rt5gU23skj4gEa-Yz1SRM5Jrts8pQJE"
 }
 
 
@@ -78,7 +79,7 @@ def update_shop_data_from_api(main_worksheet, metric):
     )
     print("Call LLA Api")
     # Define API URL, headers, and request body
-    api_url = "https://api.jarvis-lla.com/api/v1.0/imports/payroll-locations"
+    api_url = "https://jarvis-lla.com/api/v1.0/imports/payroll-locations"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
     payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to}
 
@@ -133,7 +134,7 @@ def update_technicians_from_api(main_worksheet, metric):
     )
     print("Call Technicians Summary Api")
     # Define API URL, headers, and request body
-    api_url = "https://api.jarvis-lla.com/api/v1.0/imports/payroll-technicians-summary"
+    api_url = "https://jarvis-lla.com/api/v1.0/imports/payroll-technicians-summary"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
     payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to}
 
@@ -184,7 +185,7 @@ def update_attendance_from_api(main_worksheet, metric):
     )
     print("Call Attendance Api")
     # Define API URL, headers, and request body
-    api_url = "https://api.jarvis-lla.com/api/v1.0/imports/payroll-attendance-summary"
+    api_url = "https://jarvis-lla.com/api/v1.0/imports/payroll-attendance-summary"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
     payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to}
 

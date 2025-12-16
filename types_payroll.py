@@ -44,6 +44,6 @@ DEFAULT_PAYROLL_METRICS = PayrollMetrics(
     tire_units=13,
     fluids=15,
     brake_sales=17,
-    total_payroll=17,
-    date=19,
+    total_payroll=19,
+    date=21,
 )
