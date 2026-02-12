@@ -11,15 +11,15 @@ from googleapiclient.discovery import build
 from pathlib import Path
 
 import util
-from types_payroll import DEFAULT_PAYROLL_METRICS, PayrollMetrics
+from types_payroll import DEFAULT_PAYROLL_METRICS_2026, PayrollMetrics
 from gspread_formatting import CellFormat, Color, format_cell_ranges
 
 
 
 spreadsheet_configs = {
-    # "PaycorPayroll2026": "1sbywsk3A3xdyO3280-GTd34tyHwwgzMCcWVLuJBhQoE",
-    "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro",
-    "PaycorOfficePayroll": "15a4QNJ36WCu0Rt5gU23skj4gEa-Yz1SRM5Jrts8pQJE"
+    "PaycorPayroll2026": "1sbywsk3A3xdyO3280-GTd34tyHwwgzMCcWVLuJBhQoE",
+    # "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro",
+    "PaycorOfficePayroll2026": "1gjUMLJQ4jkXx9zh0c2zjcw1gEo6OhAgH6Bi3zrgtaBw"
 }
 
 
@@ -79,9 +79,10 @@ def update_shop_data_from_api(main_worksheet, metric):
     )
     print("Call LLA Api")
     # Define API URL, headers, and request body
+    # api_url = "https://jarvis-lla.com/api/v1.0/imports/payroll-locations"
     api_url = "https://jarvis-lla.com/api/v1.0/imports/payroll-locations"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
-    payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to}
+    payload = {"fromDate": payroll_info.payroll_from, "toDate": payroll_info.payroll_to, "weekNumber": payroll_info.weekNumber}
 
     # Make the API call
     response = requests.post(api_url, headers=headers, json=payload)
@@ -102,22 +103,76 @@ def update_shop_data_from_api(main_worksheet, metric):
                 row = worksheet_location_ids.index(location_id) + 1  # rows are 1-based
                 # Prepare the cells to update
                 cells_to_update.append(
-                    gspread.Cell(row, metric.sales, location["sales"])
+                    gspread.Cell(row + metric.sales, 6,location["sales"])
                 )
                 cells_to_update.append(
-                    gspread.Cell(row, metric.car_bonus, location["carBonus"])
+                    gspread.Cell(row + metric.sales, 7, location["targets"]["Sales"]["tier1"])
                 )
                 cells_to_update.append(
-                    gspread.Cell(row, metric.alignments, location["alignments"])
+                    gspread.Cell(row + metric.sales, 8, location["targets"]["Sales"]["tier2"])
                 )
                 cells_to_update.append(
-                    gspread.Cell(row, metric.tire_units, location["tires"])
+                    gspread.Cell(row + metric.sales, 9, location["targets"]["Sales"]["tier3"])
                 )
                 cells_to_update.append(
-                    gspread.Cell(row, metric.fluids, location["fluids"])
+                    gspread.Cell(row + metric.car_bonus, 6, location["carBonus"])
                 )
                 cells_to_update.append(
-                    gspread.Cell(row, metric.brake_sales, location["brakes"])
+                    gspread.Cell(row + metric.car_bonus, 7, location["targets"]["CarBonus"]["tier1"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.car_bonus, 8, location["targets"]["CarBonus"]["tier2"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.car_bonus, 9, location["targets"]["CarBonus"]["tier3"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.alignments, 6, location["alignments"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.alignments, 7, location["targets"]["Alignments"]["tier1"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.alignments, 8, location["targets"]["Alignments"]["tier2"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.alignments, 9, location["targets"]["Alignments"]["tier3"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.tire_units, 6, location["tires"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.tire_units, 7, location["targets"]["Tires"]["tier1"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.tire_units, 8, location["targets"]["Tires"]["tier2"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.tire_units, 9, location["targets"]["Tires"]["tier3"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.fluids, 6, location["fluids"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.fluids, 7, location["targets"]["Fluids"]["tier1"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.fluids, 8, location["targets"]["Fluids"]["tier2"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.fluids, 9, location["targets"]["Fluids"]["tier3"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.brake_sales, 6, location["brakes"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.brake_sales, 7, location["targets"]["Brakes"]["tier1"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.brake_sales, 8, location["targets"]["Brakes"]["tier2"])
+                )
+                cells_to_update.append(
+                    gspread.Cell(row + metric.brake_sales, 9, location["targets"]["Brakes"]["tier3"])
                 )
 
     # Update all the prepared cells in one go
@@ -273,7 +328,7 @@ for name, current_spreadsheet_id in spreadsheet_configs.items():
     # Create a backup file in the "Backup" folder
     create_backup(spreadsheet, current_spreadsheet_id)
 
-    metric: PayrollMetrics = DEFAULT_PAYROLL_METRICS
+    metric: PayrollMetrics = DEFAULT_PAYROLL_METRICS_2026
 
   
     # Write the API data to the main worksheet
