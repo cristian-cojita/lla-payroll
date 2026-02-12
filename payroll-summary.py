@@ -7,11 +7,11 @@ from gspread_formatting import get_effective_format
 
 from pathlib import Path
 
-from types_payroll import DEFAULT_PAYROLL_METRICS, PayrollMetrics
+from types_payroll import DEFAULT_PAYROLL_METRICS_2026, PayrollMetrics
 import util
 
 spreadsheet_configs = {
-    "PaycorPayroll": "1_I9CIGk3CcTIJP5u8xgDXiUPQpN_zASGI3T4RhgH4Ro"
+    "PaycorPayroll": "1sbywsk3A3xdyO3280-GTd34tyHwwgzMCcWVLuJBhQoE"
     # "CCPaycorPayroll": "1u9xaf1AGFItt5ErTTw0zvseuwJUOoUwDBx9FXuqoLQM"
 }
 
@@ -84,8 +84,8 @@ def fill_summary(from_spreadsheet, summary_worksheet):
     print("fill_summary")
     summary_shops = summary_worksheet.get_all_values()[1:]
     payroll_sheet = from_spreadsheet.worksheet(payroll_period.execute_on_date)
-    metric: PayrollMetrics = DEFAULT_PAYROLL_METRICS
-    payroll_values = payroll_sheet.get_all_values()
+    metric: PayrollMetrics = DEFAULT_PAYROLL_METRICS_2026
+    payroll_values = payroll_sheet.get_all_values(value_render_option='UNFORMATTED_VALUE')
     cells_to_update = []
 
     for i, row in ((index, shop) for index, shop in enumerate(summary_shops) if shop[0] != ''):
@@ -93,21 +93,20 @@ def fill_summary(from_spreadsheet, summary_worksheet):
         found_shop_id = False
         total_overtime = total_payroll = sales = 0
 
-        for payroll_row in payroll_values:
-            if found_shop_id and payroll_row[metric.overtime-2] == "Personnel over":  
+        for idx, payroll_row in enumerate(payroll_values):
+            if found_shop_id and payroll_row[metric.overtime-2] == "Personnel over":
                 total_overtime = payroll_row[metric.overtime-1]
-                total_payroll = payroll_row[metric.total_payroll-1]  
-
+                total_payroll = payroll_row[metric.total_payroll-1]
                 break
             if payroll_row[0] == shop_id:  # when shop_id is found
                 found_shop_id = True
-                sales = payroll_row[metric.sales-1]
+                sales = payroll_values[idx + metric.sales][5]
 
         if found_shop_id:
-            # Clean and convert the values
-            sales = clean_currency_value(sales)
-            total_payroll = clean_currency_value(total_payroll)
-            total_overtime = clean_currency_value(total_overtime)
+            # Convert values to float (they come as raw numbers from UNFORMATTED_VALUE)
+            sales = float(sales) if sales else 0
+            total_payroll = float(total_payroll) if total_payroll else 0
+            total_overtime = float(total_overtime) if total_overtime else 0
             # Creating the Cell objects and adding them to the cells_to_update list
             cells_to_update.append(gspread.Cell(row=i+2, col=3, value=str(sales)))
             cells_to_update.append(gspread.Cell(row=i+2, col=4, value=str(total_payroll)))

@@ -1,4 +1,5 @@
 import datetime
+from tkinter import W
 from sqlalchemy import create_engine
 import configparser
 import psycopg2
@@ -64,8 +65,10 @@ def get_period() -> PayrollInfo:
     payroll_to_date = base_date - datetime.timedelta(days=1)
 
     # Create and return a PayrollInfo object
+    iso_calendar = base_date.isocalendar()
     return PayrollInfo(
         execute_on_date=base_date.strftime('%Y-%m-%d'),
         payroll_from=payroll_from_date.strftime('%Y-%m-%d'),
-        payroll_to=payroll_to_date.strftime('%Y-%m-%d')
+        payroll_to=payroll_to_date.strftime('%Y-%m-%d'),
+        weekNumber=f"{iso_calendar[0]}{iso_calendar[1]:02d}"
     )

@@ -7,6 +7,7 @@ class PayrollInfo:
     execute_on_date: str
     payroll_from: str
     payroll_to: str
+    weekNumber: str
 
 
 @dataclass
@@ -44,6 +45,24 @@ DEFAULT_PAYROLL_METRICS = PayrollMetrics(
     tire_units=13,
     fluids=15,
     brake_sales=17,
-    total_payroll=17,
-    date=19,
+    total_payroll=19,
+    date=21,
+)
+
+DEFAULT_PAYROLL_METRICS_2026 = PayrollMetrics(
+    paycor_id=2,
+    sales=2,
+    car_bonus=3,
+    alignments=4,
+    tire_units=5,
+    fluids=6,
+    brake_sales=7,
+    clocked_hours=5,
+    hours=8,
+    overtime=9,
+    labor_h=10,
+    tech_h=11,
+    invoiced_l=12,
+    total_payroll=20,
+    date=22,
 )
