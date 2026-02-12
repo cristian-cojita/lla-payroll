@@ -588,7 +588,7 @@ for name, current_spreadsheet_id in spreadsheet_configs.items():
     # result = set_total_payroll(spreadsheet)
     # print(result)
     
-    result = set_total_labor_percent(spreadsheet)
-    print(result)
+    # result = set_total_labor_percent(spreadsheet)
+    # print(result)
     
     print(f"✅ {name} processed successfully")
