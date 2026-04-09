@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 import configparser
 import psycopg2
 import pandas as pd
+import requests
 from types_payroll import PayrollInfo
 
 
@@ -72,3 +73,17 @@ def get_period() -> PayrollInfo:
         payroll_to=payroll_to_date.strftime('%Y-%m-%d'),
         weekNumber=f"{iso_calendar[0]}{iso_calendar[1]:02d}"
     )
+
+
+def trigger_apps_script(web_app_url, action, sheet_name=None):
+    """Trigger a Google Apps Script function via the deployed Web App."""
+    params = {"action": action}
+    if sheet_name:
+        params["sheet"] = sheet_name
+    print(f"Triggering Apps Script: {action}{'  on sheet ' + sheet_name if sheet_name else ''}...")
+    response = requests.get(web_app_url, params=params)
+    print(f"  Status: {response.status_code}, Response: {response.text[:200]}")
+    if response.status_code == 200 and response.text.strip() == 'OK':
+        print(f"  {action} completed successfully.")
+    else:
+        print(f"  {action} may have failed.")

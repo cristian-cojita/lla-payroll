@@ -156,6 +156,10 @@ summary_worksheet = get_or_create_sheet(summary_spreadsheet, payroll_period.exec
 for name, current_spreadsheet_id in spreadsheet_configs.items():
     current_spreadsheet = client.open_by_key(current_spreadsheet_id)
     fill_summary(current_spreadsheet, summary_worksheet)
-    
+
 order_summary(summary_worksheet)
+
+summary_web_app_url = config.get('API', 'apps-script-web-app-url')
+util.trigger_apps_script(summary_web_app_url, "setTabColor", payroll_period.execute_on_date)
+util.trigger_apps_script(summary_web_app_url, "processActiveSheet", payroll_period.execute_on_date)
 

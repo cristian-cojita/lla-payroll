@@ -4,6 +4,7 @@ import configparser
 from googleapiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime, timedelta
+import util
 
 
 
@@ -137,3 +138,29 @@ for i in range(0, 6):
 # pnl_sheets = pnl_spreadsheet.worksheets()
 # sorted_sheets = sorted(pnl_sheets, key=lambda sheet: sheet.title)
 # pnl_spreadsheet.reorder_worksheets(sorted_sheets)
+
+pnl_web_app_url = config.get('API', 'pnl-apps-script-web-app-url')
+util.trigger_apps_script(pnl_web_app_url, "sortAllSheets")
+
+first_sheet = pnl_spreadsheet.get_worksheet(0)
+period = first_sheet.acell("A1").value
+all_values = first_sheet.get_all_values()
+financial_efficiency = "N/A"
+for row in all_values:
+    if len(row) > 3 and row[1].strip().lower() == 'totals':
+        financial_efficiency = row[3]
+        break
+
+note_text = (
+    "Result:<br>"
+    "Payroll Summary - done<br>"
+    "Weekly P&amp;L - done<br>"
+    f"Financial Efficiency {period} = {financial_efficiency}"
+)
+script = f'tell application "Notes" to make new note at folder "Notes" with properties {{body:"{note_text}"}}'
+import subprocess
+result = subprocess.run(['osascript', '-e', script], capture_output=True, text=True)
+if result.returncode == 0:
+    print("Apple Note created successfully.")
+else:
+    print(f"ERROR creating Apple Note: {result.stderr.strip()}")
