@@ -67,12 +67,13 @@ def get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet):
 
     # Call LLA API ONCE for all locations
     url = "https://jarvis-lla.com/api/v1.0/tracker/period"
+    # url = "https://localhost:7222/api/v1.0/tracker/period"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
     payload = {
         "fromDate": from_date.strftime('%Y-%m-%d'),
         "toDate": to_date.strftime('%Y-%m-%d')
     }
-    response = requests.post(url, json=payload, headers=headers)
+    response = requests.post(url, json=payload, headers=headers, verify=False)  # Set verify=False for localhost testing
 
     if response.status_code == 200:
         data = response.json()
@@ -97,9 +98,8 @@ def get_pnl_data(from_date, to_date, payment_sheet, pnl_sheet):
                 # Get values from LLA api response for this location
                 loc = location_data.get(location_id)
                 if loc:
-                    items = loc.get('items', [])
-                    totalCost = next((item for item in items if item["label"] == "Total Cost"), {}).get("value", 0)
-                    grossProfit = next((item for item in items if item["label"] == "Gross Profit"), {}).get("value", 0)
+                    totalCost = loc.get("totalCost", 0)
+                    grossProfit = loc.get("grossProfit", 0)
                 else:
                     totalCost = 0
                     grossProfit = 0

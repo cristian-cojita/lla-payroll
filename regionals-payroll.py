@@ -63,9 +63,9 @@ def find_column_indices(header_row, required_headers):
 def fetch_monthly_sales_goal_by_location(period):
     """Call Jarvis monthly-targets API and return {location_id: tier1 sales goal}."""
     month_number = int(period.replace('-', ''))
-    url = "https://localhost:7224/api/v1.0/imports/monthly-targets"
+    url = "https://jarvis-lla.com/api/v1.0/imports/monthly-targets"
     headers = {"X-API-Key": x_api_key, "Content-Type": "application/json"}
-    response = requests.post(url, json={"MonthNumber": month_number}, headers=headers, verify=False)
+    response = requests.post(url, json={"MonthNumber": month_number}, headers=headers)
     response.raise_for_status()
     data = response.json()
     return {
